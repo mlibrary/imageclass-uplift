@@ -1,0 +1,28 @@
+{
+  "name": "imageclass-uplift",
+  "version": "1.0.0",
+  "description": "Utter madness.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss build src/css/v01.css -o dist/css/v01.css",
+    "watch:css": "watch 'npm run build:css' ./src/css",
+    "dev:http": "http-server . -p 9999"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/respinos/imageclass-uplift.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/respinos/imageclass-uplift/issues"
+  },
+  "homepage": "https://github.com/respinos/imageclass-uplift#readme",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.2.0",
+    "http-server": "^0.12.3",
+    "tailwindcss": "^1.8.10",
+    "watch": "^1.0.2"
+  }
+}

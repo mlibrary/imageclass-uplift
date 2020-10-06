@@ -44,10 +44,10 @@
           <img src="https://quod.lib.umich.edu/cgi/i/image/api/image/sdlhomes:SL1301:SL130101.TIF/full/res:2/0/native.jpg" alt="" aria-hidden="true" class="object-cover" />
         </div> -->
 
-        <div class="container mx-auto h-64 px-6 m-4 bg-local bg-cover bg-center shadow-2xl" style="background-image: url(https://quod.lib.umich.edu/cgi/i/image/api/image/sdlhomes:SL1301:SL130101.TIF/full/res:2/0/native.jpg)" aria-hidden="true">
+        <div class="container mx-auto h-64 px-0 m-4 bg-local bg-cover bg-center shadow-2xl" style="background-image: url(https://quod.lib.umich.edu/cgi/i/image/api/image/sdlhomes:SL1301:SL130101.TIF/full/res:2/0/native.jpg)" aria-hidden="true">
         </div>
 
-        <div class="container mx-auto px-6 flex flex-row">
+        <div class="container mx-auto pr-6 flex flex-row">
 
           <div class="sidebar flex-initial mr-8">
             <form class="flex flex-row mb-4 mt-4">

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="../../xsl/index.xsl"?>
+<?xml-stylesheet type="text/xsl" href="index.xsl"?>
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
 
   <!-- XSL fallback files -->
@@ -1316,4 +1316,6 @@ ydifWhbinVOnlkkDONs+PSpUqVnVf//Z
 
   <ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
 
+  <HeroImage>https://quod.lib.umich.edu/cgi/i/image/api/image/sdlhomes:SL1301:SL130101.TIF/full/res:2/0/native.jpg</HeroImage>
+  
 </Top>

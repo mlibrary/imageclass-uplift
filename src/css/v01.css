@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.text-gray-umich-lib {
+  color: #637381;
+}

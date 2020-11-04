@@ -116,9 +116,9 @@ console.log(transformDocXML);
       })
       var serializer = new XMLSerializer();
       var formatter = require('xml-formatter');
-      console.log(serializer.serializeToString(resultDocument));
-      console.log(formatter(serializer.serializeToString(resultDocument)));
-      editor.setValue(formatter(serializer.serializeToString(resultDocument)));
+      // console.log(serializer.serializeToString(resultDocument));
+      // console.log(formatter(serializer.serializeToString(resultDocument)));
+      editor.setValue(formatter(serializer.serializeToString(resultDocument), { collapseContent: true }));
       editor.clearSelection();
       editor.gotoLine(1);
       editor.scrollToLine(1, 1, true);

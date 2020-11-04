@@ -120,6 +120,10 @@
     </xsl:element>
   </xsl:template>
 
+  <xsl:template match="text()" mode="copy">
+    <xsl:value-of select="normalize-space(.)" />
+  </xsl:template>
+
   <xsl:template match="@*|*|text()" mode="copy">
     <xsl:copy>
       <xsl:apply-templates select="@*|*|text()" mode="copy" />

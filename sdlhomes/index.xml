@@ -21,7 +21,7 @@
 <Param name="c">sdlhomes</Param>
 <Param name="debug">xsltwrite</Param>
 </CurrentCgi>
-<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=sdlhomes;page=index;c=sdlhomes;debug=xsltwrite</CurrentUrl>
+<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=sdlhomes;page=index;c=sdlhomes</CurrentUrl>
 <UserAgent>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:81.0) Gecko/20100101 Firefox/81.0</UserAgent>
 <ReferrerHref></ReferrerHref>
 <Sid>b48ba14ceee04894c549c543cd7fe3dc</Sid>
@@ -550,7 +550,7 @@ for items where...</item>
   <Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=sdlhomes</Help>
   <Banner><Text>Saline Historic Homes</Text></Banner>
   <OpenPortfolio><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url></OpenPortfolio>
-  <SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=sdlhomes;debug=xsltwrite;page=search</SearchLink>
+  <SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=sdlhomes;page=search</SearchLink>
   <BrowseImages><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=sdlhomes_photo_date;q1=sdlhomes;type=boolean;rgn1=ic_all;med=1;view=thumbnail;c=sdlhomes</Url><Type>browseallimages</Type></BrowseImages>
   <BrowseRecords><!-- brwsrec not enabled in colldb -->
 </BrowseRecords>
@@ -1315,6 +1315,8 @@ ydifWhbinVOnlkkDONs+PSpUqVnVf//Z
 
   <ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
 
-  <HeroImage>https://quod.lib.umich.edu/cgi/i/image/api/image/sdlhomes:SL1301:SL130101.TIF/full/res:2/0/native.jpg</HeroImage>
-  
+  <BannerImage>https://quod.lib.umich.edu/cgi/i/image/api/image/sdlhomes:SL1301:SL130101.TIF/full/res:2/0/native.jpg</BannerImage>
+  <CollDescr>
+    Saline Historic Homes is a collection of photographs from a Historical and Architectural Survey that includes all structures built up to 1944 within the city limits of Saline, Michigan. Conducted in 1994 by Kosky and Glynn Associates, this survey is the result of the City's intent to comply with the Certified Local Government requirements. The objective of the survey was to research, photograph and map all structures built within the City of Saline between 1829 and 1944. The completed project includes a survey card and black and white photograph for each structure, a map of all surveyed structures, and historical and architectural text encompassing the study period.
+  </CollDescr>
 </Top>

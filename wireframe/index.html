@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WTF</title>
+    <title>Wireframe View</title>
     <!-- <link rel="stylesheet" href="css/wireframe.css" /> -->
     <script>
 
@@ -41,6 +41,7 @@
     <div id="editor"></div>
     <script>
       var inputFilename = '/' + location.search.substr(1);
+      document.title += ' : ' + location.search.substr(1);
     </script>
     <script>
       var processor = new XSLTProcessor();
@@ -63,6 +64,7 @@
       var now = Date.now();
       var transformDocXML = `<?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat">
+  <xsl:import href="/xsl/social.wireframe.xsl?now=${now}" />
   <xsl:import href="/xsl/${baseName.replace('.xml', '.wireframe.xsl')}?_=${now}" />
   <xsl:import href="${inputFilename.replace('.xml', '.wireframe.xsl')}?_=${now}" />
   <xsl:import href="/xsl/wireframe.xsl?_=${now}" />
@@ -73,7 +75,12 @@ console.log(transformDocXML);
       var transformDoc = parser.parseFromString(transformDocXML, "text/xml");
 
       processor.reset();
-      processor.importStylesheet(transformDoc);
+
+      try {
+        processor.importStylesheet(transformDoc);
+      } catch(err) {
+        console.log(err);
+      }
 
       resultDocument = processor.transformToFragment(inputDocument, document);
 
@@ -109,11 +116,14 @@ console.log(transformDocXML);
       })
       var serializer = new XMLSerializer();
       var formatter = require('xml-formatter');
+      console.log(serializer.serializeToString(resultDocument));
+      console.log(formatter(serializer.serializeToString(resultDocument)));
       editor.setValue(formatter(serializer.serializeToString(resultDocument)));
       editor.clearSelection();
       editor.gotoLine(1);
       editor.scrollToLine(1, 1, true);
       editor.focus();
+      editor.setReadOnly(true);
     </script>
   </body>
 </html>

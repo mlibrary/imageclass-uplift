@@ -1,0 +1,254 @@
+html {
+  /*max-width:70ch;*/
+  /*padding:2ch;*/
+  margin:auto;
+  color:#333;
+  /*font-size:1.2em;*/
+}
+
+* {
+     display:block;
+     font-size: 1rem;
+}
+
+html, body {
+     margin-left: 0;
+}
+html > *, body > * {
+     margin-left: 0 !important;
+     border-left: none;
+     padding-left: 0;
+}
+
+* > * {
+    margin-left: 2rem !important;
+    /* border-left: 1px solid #666; */
+    padding-left: 1rem !important;
+}
+
+ a,code,em,strong,i,span,svg {
+     display:inline-block;
+     margin: 0;
+}
+
+a::after, code::after, em::after, strong::after {
+  margin: 0;
+}
+
+head, script, style { display: none; }
+
+ * {
+     font-family:Monospace;
+     margin: 0.5rem 0;
+     padding:0;
+     text-decoration:none 
+}
+
+/* tags with attributes. */
+
+ a[href]::before {
+     content: "<a href='" attr(href) "'>" 
+}
+ link[rel]::before {
+     content: "<link rel='" attr(rel) "' type='" attr(type)"' href='" attr(href) "'>" 
+}
+
+/* special escaping for close style */
+ style::before {
+     content:'<style>' 
+}
+ style::after {
+     content:'<\/style>' 
+}
+
+/* brutify */
+ *::before,*::after {
+     color:rgb(136, 18, 128, 0.5);
+     font-weight:100;
+     font-size:1.0em 
+}
+ html {
+     max-width:70ch;
+     padding:2ch;
+     margin:auto;
+     color:#333;
+     font-size:1.2em;
+}
+
+/* here is the highly repetitive bit */
+header::before {
+     content:'<header>' 
+}
+header::after {
+     content:'</header>' 
+}
+footer::before {
+     content:'<footer>' 
+}
+footer::after {
+     content:'</footer>' 
+}
+article::before {
+     content:'<article>' 
+}
+article::after {
+     content:'</article>' 
+}
+section::before {
+     content:'<section>' 
+}
+section::after {
+     content:'</section>' 
+}
+br::before {
+     content:'<br />' 
+}
+br {
+  margin: 0;
+}
+
+
+p::before {
+     content:'<p>' 
+}
+ p::after {
+     content:'</p>' 
+}
+ /* html::before {
+     content:'<html>' 
+}
+ html::after {
+     content:'</html>' 
+} */
+ head::before {
+     content:'<head>' 
+}
+ head::after {
+     content:'</head>' 
+}
+ title::before {
+     content:'<title>' 
+}
+ title::after {
+     content:'</title>' 
+}
+ link::before {
+     content:'<link>' 
+}
+ link::after {
+     content:'</link>' 
+}
+ /* body::before {
+     content:'<body>' 
+}
+ body::after {
+     content:'</body>' 
+} */
+ h1::before {
+     content:'<h1>' 
+}
+ h1::after {
+     content:'</h1>' 
+}
+ h2::before {
+     content:'<h2>' 
+}
+ h2::after {
+     content:'</h2>' 
+}
+ p::before {
+     content:'<p>' 
+}
+ p::after {
+     content:'</p>' 
+}
+ pre::before {
+     content:'<pre>' 
+}
+ pre::after {
+     content:'</pre>' 
+}
+ code::before {
+     content:'<code>' 
+}
+ code::after {
+     content:'</code>' 
+}
+ a::before {
+     content:'<a>' 
+}
+ a::after {
+     content:'</a>' 
+}
+ aside::before {
+     content:'<aside>' 
+}
+ aside::after {
+     content:'</aside>' 
+}
+ blockquote::before {
+     content:'<blockquote>' 
+}
+ blockquote::after {
+     content:'</blockquote>' 
+}
+ em::before {
+     content:'<em>' 
+}
+ em::after {
+     content:'</em>' 
+}
+ strong::before {
+     content:'<strong>' 
+}
+ strong::after {
+     content:'</strong>' 
+}
+ i::before {
+     content:'<i>' 
+}
+ i::after {
+     content:'</i>' 
+}
+ svg::before {
+     content:'<svg>' 
+}
+ svg::after {
+     content:'</svg>' 
+}
+ form::before {
+     content:'<form>' 
+}
+ form::after {
+     content:'</form>' 
+}
+ button::before {
+     content:'<button>' 
+}
+ button::after {
+     content:'</button>' 
+}
+ nav::before {
+     content:'<nav>' 
+}
+ nav::after {
+     content:'</nav>' 
+}
+
+div::before { content: '<div>'; }
+div::after {content:'</div>';}
+/*div[class]::before {content:'<div class="' attr(class) '">';}*/
+div[class]::before { content: '<' attr(class) '>'; }
+div[class]::after { content: '</' attr(class) '>'; }
+
+m-website-header::before {content:'<m-website-header name="' attr(name) '">';}
+m-website-header::after {content:'</m-website-header>';}
+m-universal-header::before {content:'<m-universal-header>';}
+m-universal-header::after {content:'</m-universal-header>';}
+
+*::before,*::after {
+  color:rgba(136, 18, 128, 0.5);
+  font-weight:100;
+  font-size:1.0em
+}
+

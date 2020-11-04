@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss build src/css/v01.css -o dist/css/v01.css",
     "watch:css": "watch 'npm run build:css' ./src/css",
-    "dev:http": "http-server . -p 9999"
+    "dev:http": "http-server . -p 4444 -a 127.0.0.1"
   },
   "repository": {
     "type": "git",

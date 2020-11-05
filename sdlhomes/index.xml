@@ -1,653 +1,946 @@
 <?xml version="1.0"?>
 <Top xmlns:dlxs="http://www.umdl.umich.edu/dlxs">
-
-  <!-- XSL fallback files -->
-  <XslFallbackFileList>
-    <Filename>xsl2htmlutils.xsl</Filename>
-    <Filename>htmlhead.xsl</Filename>
-    <Filename>displayheader.xsl</Filename>
-    <Filename>browseoptions.xsl</Filename>
-    <Filename>search.xsl</Filename>
-    <Filename>fieldvalues.xsl</Filename>
-    <Filename>index.xsl</Filename>
-  </XslFallbackFileList>  
-
-
-  <!-- Custom OPTIONAL XML for top-level file index.xml<2> -->
-  <CustomXml></CustomXml>
-
-  <DlxsGlobals><CurrentCgi><Param name="cc">sdlhomes</Param>
-<Param name="page">index</Param>
-<Param name="c">sdlhomes</Param>
-<Param name="debug">xsltwrite</Param>
-</CurrentCgi>
-<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=sdlhomes;page=index;c=sdlhomes</CurrentUrl>
-<UserAgent>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:81.0) Gecko/20100101 Firefox/81.0</UserAgent>
-<ReferrerHref></ReferrerHref>
-<Sid>b48ba14ceee04894c549c543cd7fe3dc</Sid>
-
-<EffectiveLanguage>en</EffectiveLanguage>
-<LanguageOptions><OptionalLanguage>en</OptionalLanguage></LanguageOptions>
-<LangMap>
-  
-  <!-- bbopenutils.xsl which serves bbopen.xsl, bbname.xsl -->
-<!-- "items1" used by bbresults_nav.xsl SliceSummary -->
-<!-- "portfolio" used by bbresults_nav.xsl CollectionName -->
-<lookup id="bbopenutils">
-<item key="portfolio">portfolio</item>
-<item key="porthelp"><b>Help</b> For Using Portfolios</item>
-<item key="bbopenpageheader">Portfolios</item>
-<item key="bbnamepageheader">Add&#xa0;to&#xa0;a&#xa0;New&#x0a;or Existing Portfolio</item>
-<item key="yourport">your portfolios</item>
-<item key="pubport">all public portfolios</item>
-<item key="bbagname">portfolio name</item>
-<item key="action">action</item>
-<item key="items1">items</item>
-<item key="shared">public</item>
-<item key="username">owner(s)</item>
-<item key="open3">open</item>
-<item key="add3">add</item>
-<item key="savename">save name</item>
-<item key="saveowners">save owners</item>
-<item key="bbdel3">delete...</item>
-<item key="bbexportprep3">download...</item>
-<item key="viewable">viewable by public</item>
-<item key="instructionbbname">To create a <b>new</b> portfolio with the selected images, enter a name in the <b>text box</b> and click <b>Submit</b>.<br />To <b>add</b> the selected images to an <b>existing</b> portfolio, find the portfolio name in the table below and click <b>add</b>.</item>
-<item key="0">no</item>
-<item key="1">yes</item>
-<item key="switch0">make&#xa0;public</item>
-<item key="switch1">make&#xa0;private</item>
-<item key="none present">None present.</item>
-</lookup>
-
-<!-- bbdel.xsl bbdelconf.xsl-->
-<lookup id="bbdel">
-<item key="successdel">Portfolio successfully deleted.</item>
-<item key="instructionbbdel">You may open a portfolio or close this window.</item>
-<item key="yes">Yes</item>
-<item key="no">No</item>
-<item key="instructionbbdelconf">Permanently delete portfolio?</item>
-<item key="name">Name of portfolio</item>
-</lookup>
-
-<!-- bbexport.xsl -->
-<lookup id="bbexport">
-<item key="exportfull-image">media</item>
-
-<item key="exportdescription">record</item>
-<item key="accessdenied">The media was not included due
-to a lack of access privileges. Sorry. You may view the record.</item>
-
-<item key="index">index</item>
-<item key="of"> of </item>
-<item key="viewonline">view online</item>
-<item key="exportPageTitle">export </item>
-<item key="guidelinesbuttontext">guidelines</item>
-<item key="guidelinesTitle">Guidelines For Use</item>
-<item key="portlastmod">portfolio last modified: </item>
-<item key="forhelp">For help or to request permission to publish: </item>
-
-</lookup>
-
-<!-- bbexportprep.xsl -->
-<lookup id="bbexportprep">
-<item key="returntoportfolios">return to the list of portfolios</item>
-<item key="morehelp">More Help</item>
-<item key="imagesize">image size</item>
-<item key="imagesizesmall">small</item>
-<item key="imagesizemedium">medium (presentation)</item>
-<item key="imagesizelarge">large</item>
-<item key="imagesizelargest">largest</item>
-<item key="download">download</item>
-<item key="whendone1P1">When done, all of the
-images (and/or other media) will reside on your computer for convenient
-use. HTML pages are also included for viewing records and easy
-navigation of images.</item>
-<item key="long">The download may take several minutes to complete.</item>
-<item key="portfoliodownloadsteps">Portfolio Download</item>
-<item key="bbexportpreppageheader">Portfolio Download</item>
-<item key="portfoliosdisabled">Portfolio functionality is
-turned off.</item>
-<item key="exportdisabled">Portfolio export functionality is turned
-off.</item>
-<item key="toomanyitemstodownload">Only the first $count items will be downloaded.</item>
-</lookup>
-
-<!-- displayheader_results.xsl -->
-<!-- <lookup id="displayheader_results_LEGACY">
-<item key="thumbnail">images with captions</item>
-<item key="thumbfull">images with record</item>
-<item key="reslist">captions only</item>
-<item key="bbthumbnail">images with captions</item>
-<item key="bbthumbfull">images with record</item>
-<item key="bbreslist">captions only</item>
-<item key="prep">prep tables in use</item>
-</lookup>
- -->
-<lookup id="displayheader_results">
-<item key="thumbnail">grid</item>
-<item key="thumbfull">grid + details</item>
-<item key="reslist">list</item>
-<item key="icon-thumbnail">icon-th</item>
-<item key="icon-thumbfull">icon-picture</item>
-<item key="icon-reslist">icon-th-list</item>
-<item key="bbthumbnail">grid</item>
-<item key="bbthumbfull">grid + details</item>
-<item key="bbreslist">list</item>
-<item key="icon-bbthumbnail">icon-th</item>
-<item key="icon-bbthumbfull">icon-picture</item>
-<item key="icon-bbreslist">icon-th-list</item>
-<item key="prep">prep tables in use</item>
-</lookup>
-
-<!-- groups.xsl -->
-<lookup id="groups">
-<item key="groups">collection groups list</item>
-<item key="selectgroup">Select a collection group</item>
-<item key="instructiongroupspick">Collections are arranged into groups for searching. Click on a group name to search the collections in that group. A collection may include some content outside of the group's definition, and a collection could appear in more than one group. Click the title of a specific collection to search it alone. Sometimes it is advantageous to search a single collection. For example, search field and sorting options are often specific to the collection, allowing for a more refined search. </item>
-<item key="more">more</item>
-<item key="instructiongroupspick2">Some collections have a very narrow focus. Other collections are broader, and may encompass many sub-collections.  Occassionally an image appears in multiple collections, though generally there is a single authoritative source for each image.</item>
-<item key="collections">collections</item>
-<item key="media">images/media</item>
-<item key="records2">records</item>
-
-</lookup>
-
-
-<!-- searchutils.xsl -->
-<lookup id="searchutils">
-<item key="see">see search tips</item>
-
-<item key="instructioncollspick1">Select one or more databases to search. Click the database name to search it alone, often in more detail.</item>
-<item key="instructionsearch1">To search, enter a word or phrase in a box below and select a field from the menu.</item>
-<item key="instructionsearch2">It is not necessary to use more than one box.</item>
-<item key="instructionsearch3">You can search all the databases in this group, or use the <b>list of databases</b> to restrict your search to a subset.</item>
-<item key="newgroup">select a new group to search</item>
-<item key="in">in</item>
-<item key="rangehelp">e.g., 1954 to 1961, -825 to -800.</item>
-<item key="only">has digital media</item>
-<item key="PleaseSelectColl">Please select at least one database to search.</item>
-</lookup>
-
-<!-- browse.xsl, index.xsl -->
-<lookup id="browse">
-<item key="browse">Browse</item>
-</lookup>
-
-<!-- collinfo.xsl -->
-<!-- index.xsl -->
-<lookup id="index">
-<item key="home">Home</item>
-<item key="collinfo">database info</item>
-<item key="closewindow">CLOSE WINDOW</item>
-<item key="thiscoll">this collection</item>
-<!-- <item key="browseallimages">Browse all media</item>
-<item key="browseallrecords">Browse all records</item>
-<item key="browsesampleimages">Browse sample media</item>
-<item key="browsesamplerecords">Browse sample records</item>
-<item key="browsemediaaddsmods">Browse newest additions and updates</item>
-<item key="browsemostviewed">Browse most viewed</item> -->
-<item key="browseallimages">All media</item>
-<item key="browseallrecords">All records</item>
-<item key="browsesampleimages">Sample media</item>
-<item key="browsesamplerecords">Sample records</item>
-<item key="browsemediaaddsmods">Newest additions and updates</item>
-<item key="browsemostviewed">Most viewed</item>
-<item key="access">Collection Access</item>
-<item key="access1">Access to this collection is restricted to authorized users.</item>
-<item key="access2">This collection is open to the public. You may have
-additional privileges if you log in.</item>
-<item key="access3">You are an authorized user of this collection.</item>
-<item key="access4">Access restricted.</item>
-<item key="sendcomments">Send comments on this collection to</item>
-<item key="brief">Collection Size</item>
-<item key="searchmulti">Search Multiple Collections</item>
-<item key="selectagroup1">Select a group</item>
-<item key="selectagroup2">of collections to search simultaneously. Search this collection together with others.</item>
-<item key="numberof">Number of Images and Records Online</item>
-<item key="images">Online Images/Media</item>
-<item key="records">Records</item>
-</lookup>
-
-<!-- noresults.xsl -->
-<lookup id="noresults">
-<item key="noresults">No Results</item>
-<item key="type_ic_range">ranges from</item>
-<item key="type_ic_exact">is exactly</item>
-<item key="type_default">contains the term(s)</item>
-<item key="type_allmedia"> media was added or updated within </item>
-<item key="days"> day(s).</item>
-<item key="to">to</item>
-</lookup>
-
-<!-- results.xsl -->
-<lookup id="results">
-<item key="and">and</item>
-<item key="view">view</item>
-<item key="record">record</item>
-<item key="digitalformat">digital format</item>
-<item key="notavail">not available</item>
-<item key="portfolioempty">This portfolio has no items.</item>
-<item key="missing">no longer available</item>
-<item key="restricted">Restricted.</item>
-<item key="trytolocate">try to locate</item>
-<item key="notifymaintainer">notify maintainer</item>
-<item key="nosortvalue">no sort value</item>
-</lookup>
-
-
-<!-- thumbfull.xsl -->
-<lookup id="thumbfull">
-<item key="instructionthumbfullresults">Click on thumbnails to view larger images and full records. <br />Click "descriptive info" link to view record data to the left.</item>
-<item key="descriptive">&lt;text</item>
-</lookup>
-
-<!-- reslist.xsl -->
-<lookup id="reslist">
-<item key="view4">view full record for <b>item</b></item>
-</lookup>
-
-<!-- displayheader.xsl -->
-<lookup id="displayheader">
-<item key="newsearch">advanced search</item>
-<item key="quicksearch">Quick Search</item>
-</lookup>
-
-<!-- results_nav.xsl -->
-<lookup id="results_nav">
-<item key="to1">to</item>
-<item key="of">of</item>
-<item key="hits">hits</item>
-
-<item key="login0">You are not logged in.</item>
-<item key="login1">You are logged in.</item>
-
-<item key="prev">previous</item>
-<item key="next">next</item>
-
-<item key="portfour">Portfolio storage is temporary.</item>
-<item key="portone">Portfolio storage is long term.</item>
-<item key="portthree">You do not own this portfolio.</item>
-<item key="porttwo">You do not own this portfolio.</item>
-
-</lookup>
-
-<!-- bbcustomorder.xsl -->
-<lookup id="bbcustomorder">
-<item key="instructionbbcustomorder">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
-<item key="nocaption">no caption or caption too long.</item>
-</lookup>
-
-<!-- entry.xsl -->
-<lookup id="entry">
-<item key="bookmarkhelp">bookmark:</item>
-<item key="downloadmedia">download largest size</item>
-<item key="downloadmediacurrentsize">download current size</item>
-<item key="newwindow">new window</item>
-<item key="viewmediaonly">view media only</item>
-<item key="otherviewsnothumb">view</item>
-
-<item key="other">other views</item>
-<item key="other views">other views</item>
-<item key="other-views">other views</item>
-
-<item key="full image">full image</item>
-<item key="full-image">full-image</item>
-
-<item key="description">description</item>
-
-<item key="backtoresults">back to results</item>
-<item key="previtem">&lt;&lt; previous item</item>
-<item key="nextitem">next item &gt;&gt;</item>
-<item key="addport">add to portfolio</item>
-<item key="removeport">remove from portfolio</item>
-<item key="relatedports">portfolio inclusions</item>
-
-<item key="feedbacklink">Problems/comments about this item?</item>
-<item key="feedbackreply">To request a reply, please provide your email address.</item>
-<item key="feedbackcomments">Comments?</item>
-<item key="feedbackusername">Include your user name?</item>
-<item key="feedback">Feedback</item>
-
-
-</lookup>
-
-<!-- entry_imagetools.xsl -->
-<lookup id="entry_imagetools">
-
-<item key="video.sense">view</item>
-<item key="video">video</item>
-<item key="video.icon">icon-film</item>
-
-<item key="audio.sense">listen to</item>
-<item key="audio">audio</item>
-<item key="audio.icon">icon-volume-down</item>
-
-<item key="svg.sense">view</item>
-<item key="svg">flash movie</item>
-<item key="svg.icon">icon-film</item>
-
-<item key="doc.sense">view</item>
-<item key="doc">related document</item>
-<item key="doc.icon">icon-file</item>
-
-<item key="url.sense">view</item>
-<item key="url">linked content in new window</item>
-<item key="url.icon">icon-share</item>
-
-<item key="image.sense">view</item>
-<item key="image">image</item>
-<item key="image.icon">icon-picture</item>
-
-<item key="size">size</item>
-
-<item key="nomedia">Sorry, digital media is not available for this item.</item>
-
-<item key="panzoomhelp">How to interact with this image...</item>
-<item key="tozoomin">zoom in: double-click</item>
-<item key="tozoomout">zoom out: shift-double-click</item>
-<item key="topan">pan: drag</item>
-<item key="zoom">zoom</item>
-<item key="sizes">image sizes</item>
-
-
-</lookup>
-
-
-
-<!-- tips.xsl -->
-
-<lookup id="searchtips">
-<item key="searchtips">search tips</item>
-<item key="instructionsearchtips"><p><b>Matching words:</b> The search
-engine attempts to match any word or phrase exactly as you put it in
-the box.</p><p> e.g.: <i>Picasso and Rembrandt</i> in a box will look
-for</p><p> &#34;Picasso and Rembrandt&#34;</p><p>and produced no
-results.</p><p><b>Punctuation: </b>All punctuation is treated as an
-empty space.</p><p><b>Case</b>: The search engine is not case
-sensitive.</p><p><b>Wildcards:</b> Use wildcard * to expand word
-stems. This is a good way to search for variations on a
-word.</p><p><b>Choose image collections</b>: Limit your search to only
-those collections you choose in the image collections list.</p></item>
-</lookup>
-
-<!-- results.xsl -->
-<lookup id="BbagOptionsMenu">
-<item key="bbom.check">check all</item>
-<item key="bbom.uncheck">uncheck all</item>
-<item key="bbom.bbname">add checked to portfolio...</item>
-<item key="bbom.remove">remove checked from portfolio</item>
-</lookup>
-
-<lookup id="viewinstruct">
-<item key="thumbnail1">Use checkboxes to select images for adding to a
-portfolio, then click the "add to portfolio" button. Click on
-thumbnails to view larger images and full records.</item>
-<item key="thumbnail0">Click on thumbnails to view larger images and full records.</item>
-<item key="thumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
-<item key="thumbfull1" >Click on thumbnails to view larger images and full records. <br />Click "descriptive info" link to view record data in this space.</item>
-<item key="reslist1"  >Use checkboxes to select records for adding to a portfolio, then click the "add to portfolio" button. Click "view full record" link the full record.</item>
-<item key="reslist0"  >Click "view full record" link the full record.</item>
-<item key="bbthumbnail1" >Click on thumbnails to view larger images and full records.</item>
-<item key="bbthumbnail0" >Click on thumbnails to view larger images and full records.</item>
-<item key="bbthumbfull0" >Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
-<item key="bbthumbfull1">Click on the thumbnail image to display a
-large image. Click on the "descriptive info" link beneath any thumbnail image to see detailed record information in this space.</item>
-<item key="bbreslist1">Click "view full record" link the full record.</item>
-<item key="bbreslist0">Click "view full record" link the full record</item>
-<item key="bbcustomorder1">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
-<item key="bbcustomorder0"></item>
-<item key="bbexport1">The portfolio package is ready for download as a ZIP file.</item>
-
-<item key="medianodownload">sorry, media is not available for
-download.</item>
-<item key="bbexport0"></item>
-</lookup>
-
-<lookup id="sort">
-<item key="sort">sort</item>
-<item key="sortnot2">too many results to sort</item>
-<item key="customize">customize order...</item>
-</lookup>
-
-<lookup id="misc">
-
-<!-- alt tags for graphics -->
-
-<!-- login/out -->
-<item key="login">login</item>
-<item key="logout">logout</item>
-
-<!-- open portfolio -->
-<item key="portfolios">portfolios</item>
-
-<!-- contact / help -->
-<item key="contact">contact</item>
-<item key="Contact">Contact</item>
-<item key="help">help</item>
-
-<!-- appears in "index", "searchutils"-->
-<item key="search2">Search</item>
-
-<item key="databases">Databases</item>
-<item key="collhome">collection home</item>
-
-<item key="close">close</item>
-
-<item key="multiple">Multiple Collections</item>
-
-
-</lookup>
-
-<lookup id="SearchFormOpsMenu">
-<item key="And">And</item>
-<item key="Or">Or</item>
-<item key="Not">Not</item>
-<item key="and not">And Not</item>
-</lookup>
-
-<lookup id="SearchFormSelMenu">
-<item key="ends">Ends with</item>
-<item key="contains">Contains</item>
-<item key="phrase">Contains the phrase</item>
-<item key="starts">Starts with</item>
-<item key="any">Contains any of these words</item>
-<item key="all">Contains all of these words</item>
-<item key="ic_exact">Exactly matches</item>
-<item key="regex">Matches</item>
-</lookup>
-
-
-<!-- moaaic-group, searchmaps.xsl -->
-<lookup id="searchmaps">
-<item key="searchmaps">Search for maps</item>
-<item key="instructionsearch1">Enter an exact word or phrase.</item>
-</lookup>
-
-<lookup id="NoResults">
-<item key="sorrynoresults">Sorry, no results were found when searching
-for items where...</item>
-<item key="pleasetry">Please try again.</item>
-<item key="mediaonly">Including an image or other media.</item>
-</lookup>
-
-
-
-
-
-
-
-
-</LangMap>
-
-<TemplatePath>/l1/dev/roger/web/i/image/index.xml</TemplatePath>
-<TemplateName>index</TemplateName>
-<XcollMode>singlecoll</XcollMode>
-
-<CurrentScriptName>/cgi/i/image/image-idx</CurrentScriptName>
-<ScriptName application="text">/cgi/t/text/text-idx</ScriptName>
-<ScriptName application="pageviewer">/cgi/t/text/pageviewer-idx</ScriptName>
-<ScriptName application="ww">/cgi/t/text/ww2-idx</ScriptName>
-<ScriptName application="findaid">/cgi/f/findaid/findaid-idx</ScriptName>
-<ScriptName application="image">/cgi/i/image/image-idx</ScriptName>
-
-
-
-<BookmarkableUrl></BookmarkableUrl>
-<AuthenticationEnabled>1</AuthenticationEnabled>
-<UserAuthenticated>0</UserAuthenticated>
-<AuthenticatedUsername></AuthenticatedUsername>
-<SupportedAuthSystems><System>um</System></SupportedAuthSystems>
-<QuickBrowse></QuickBrowse>
-<Feed>
-  <FeedLink type="short"></FeedLink>
-  <FeedLink type="long"></FeedLink>
-</Feed>
-<TaggingEnabled>0</TaggingEnabled>
-<CollGroupMembership>:localhist-ic:</CollGroupMembership>
-<EncodingType><?DOC_ENCODING_TYPE_XML?></EncodingType>
-
-
-<HeadLinks>
-  <!-- <CssLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css</CssLink> -->
-  <CssLink>/i/image/bootstrap/css/bootstrap.min.css</CssLink>
-  <CssLink>/i/image/css/imageclass.css</CssLink>
-  <CssLink>/i/image/css/imageclass-specific.css</CssLink>
-
-  <BootstrapLink>//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js</BootstrapLink>
-  <BootstrapLink>/i/image/jquery/jquery-migrate-1.2.1.js</BootstrapLink>
-  <BootstrapLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js</BootstrapLink>
-  <!-- <BootstrapLink>/i/image/bootstrap/js/bootstrap.js</BootstrapLink> -->
-  <JavaScriptUrl>/i/image/js/jquery.placeholder.js</JavaScriptUrl>
-
-  <ApiUrl>/cgi/i/image/api</ApiUrl>
-  <Timestamp>20180409</Timestamp>
-
-  <AssetDebug>yes</AssetDebug>
-
-
-</HeadLinks>
-</DlxsGlobals>
-
-  <ExtraCSS>/i/image/css/index.css</ExtraCSS>
-
-
-  <CollName><Full>Saline Historic Homes</Full><Brief>Saline Historic Homes</Brief></CollName>
-
-  <JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl>
-  <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'s'+'d'+'l'+'p'+'h'+'o'+'t'+'o'+'s'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
-  <ContactText>E-mail Help</ContactText>
-  <LoginLink><Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1601991574</Url><Mode>login</Mode></LoginLink>
-
-  <TipsUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=tips;c=sdlhomes</TipsUrl>
-  <SortOptionsMenu><HiddenVars><Variable name="cc">sdlhomes</Variable>
-<Variable name="page">index</Variable>
-<Variable name="c">sdlhomes</Variable>
-<Variable name="debug">xsltwrite</Variable>
-</HiddenVars><TotalResults></TotalResults><SortThresshold>1000</SortThresshold><ThresholdExceeded>false</ThresholdExceeded><Option><Label>(None)</Label><Value>none</Value><Focus>true</Focus></Option><Option><Label>Photo Date</Label><Value>sdlhomes_photo_date</Value></Option><Option><Label>Survey Date</Label><Value>sdlhomes_survey_dt</Value></Option><Option><Label>Photo Negative No.</Label><Value>sdlhomes_photo_neg_no</Value></Option><Name>sort</Name><Default>none</Default></SortOptionsMenu>
-
-  <Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=sdlhomes</Home>
-  <Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=sdlhomes</Help>
-  <Banner><Text>Saline Historic Homes</Text></Banner>
-  <OpenPortfolio><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url></OpenPortfolio>
-  <SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=sdlhomes;page=search</SearchLink>
-  <BrowseImages><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=sdlhomes_photo_date;q1=sdlhomes;type=boolean;rgn1=ic_all;med=1;view=thumbnail;c=sdlhomes</Url><Type>browseallimages</Type></BrowseImages>
-  <BrowseRecords><!-- brwsrec not enabled in colldb -->
-</BrowseRecords>
-  <BrowseMediaAddsMods><!-- brwsadds not enabled in colldb -->
-</BrowseMediaAddsMods>
-  <BrowseMostViewed><Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=mostviewed;type=mostviewed;view=thumbnail;c=sdlhomes</Url><Type>browsemostviewed</Type></BrowseMostViewed>
-
-
-  <BrowseOptions></BrowseOptions>
-
-
-  <RestrictStatus>access2</RestrictStatus>
-  <AccessRestrictions>
-    <Status>public</Status>
-    <Public href="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?auth=world;sort=sdlhomes_photo_date;q1=sdlhomes;type=boolean;rgn1=ic_all;view=reslist;c=sdlhomes">416</Public>
-    <Authorized>0</Authorized>
-    <Restricted>0</Restricted>
-</AccessRestrictions>
-
-
-  <CollInfoLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=collinfo;c=sdlhomes</CollInfoLink>
-
-  <SearchForm><NumQs>2</NumQs><Q name="q1"><Value></Value><Rgn name="rgn1"><Option><Label>Anywhere in record</Label><Value>ic_all</Value></Option><Option><Label>Historic Name</Label><Value>sdlhomes_historic_name</Value></Option><Option><Label>Common Name</Label><Value>sdlhomes_common_name</Value></Option><Option><Label>District Name</Label><Value>sdlhomes_district_name</Value></Option><Option><Label>Bibliographic Reference</Label><Value>sdlhomes_ref</Value></Option><Option><Label>Photo Negative No.</Label><Value>sdlhomes_photo_neg_no</Value></Option><Name>rgn1</Name><Default>all</Default></Rgn><Op name="op2"><Option><Label>And</Label><Value>And</Value><Focus>true</Focus></Option><Option><Label>Or</Label><Value>Or</Value></Option><Option><Label>Not</Label><Value>Not</Value></Option><Name>op2</Name><Default>And</Default></Op><Sel name="select1" abbr="ic_all"><Option><Label>all</Label><Value>all</Value></Option><Name>select1</Name><Default></Default></Sel><Sel name="select1" abbr="sdlhomes_historic_name"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default></Default></Sel><Sel name="select1" abbr="sdlhomes_common_name"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default></Default></Sel><Sel name="select1" abbr="sdlhomes_district_name"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default></Default></Sel><Sel name="select1" abbr="sdlhomes_ref"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default></Default></Sel><Sel name="select1" abbr="sdlhomes_photo_neg_no"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select1</Name><Default></Default></Sel></Q><Q name="q2"><Value></Value><Rgn name="rgn2"><Option><Label>Anywhere in record</Label><Value>ic_all</Value></Option><Option><Label>Historic Name</Label><Value>sdlhomes_historic_name</Value></Option><Option><Label>Common Name</Label><Value>sdlhomes_common_name</Value></Option><Option><Label>District Name</Label><Value>sdlhomes_district_name</Value></Option><Option><Label>Bibliographic Reference</Label><Value>sdlhomes_ref</Value></Option><Option><Label>Photo Negative No.</Label><Value>sdlhomes_photo_neg_no</Value></Option><Name>rgn2</Name><Default>all</Default></Rgn><Sel name="select2" abbr="ic_all"><Option><Label>all</Label><Value>all</Value></Option><Name>select2</Name><Default></Default></Sel><Sel name="select2" abbr="sdlhomes_historic_name"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default></Default></Sel><Sel name="select2" abbr="sdlhomes_common_name"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default></Default></Sel><Sel name="select2" abbr="sdlhomes_district_name"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default></Default></Sel><Sel name="select2" abbr="sdlhomes_ref"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default></Default></Sel><Sel name="select2" abbr="sdlhomes_photo_neg_no"><Option><Label>all</Label><Value>all</Value></Option><Option><Label>any</Label><Value>any</Value></Option><Option><Label>phrase</Label><Value>phrase</Value></Option><Option><Label>ic_exact</Label><Value>ic_exact</Value></Option><Name>select2</Name><Default></Default></Sel></Q><HiddenVars><Variable name="type">boolean</Variable>
-<Variable name="c">sdlhomes</Variable>
-</HiddenVars><ResultsViewOptions><Option><Label>thumbnail</Label><Value>thumbnail</Value><Focus>true</Focus></Option><Option><Label>thumbfull</Label><Value>thumbfull</Value></Option><Option><Label>reslist</Label><Value>reslist</Value></Option><Name>view</Name><Default>thumbnail</Default></ResultsViewOptions></SearchForm>
-  <GroupsLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=groups</GroupsLink>
-  <Groups><Group GroupID="localhist-ic">Local History</Group>
-</Groups>
-
-
-  <Stats>
-    <Records>345</Records>
-    <Images>413</Images>
-  </Stats>
-
-
-  <InsertTextInfo><div>
-  <div class="row-fluid">
-    <div class="span3" style="text-align: center">
-      <div style="margin-bottom: 8px">
-        <a href="http://saline.lib.mi.us/">
-          <img width="137" height="137" src="/s/sdlsvf/graphics/sdl_logo.gif" />
-          <br />
-          <strong>Saline District Library</strong>
-        </a>
-      </div>
-      <div>
-        <a href="http://www.salinehistory.org">
-          <img height="109" border="0" width="84" src="/s/sdlsvf/graphics/shshouse57.jpg" />
-          <br />
-          <strong>Saline Area Historical Society</strong>
-        </a>
-      </div>
-    </div>
-    <div class="span9">
-      <div class="instructiontxt">
-      <p>
-      This <em>Historical and Architectural Survey</em> includes all structures built up to 1944 within the city limits of Saline Michigan.  Conducted in 1994 by Kosky and Glynn Associates, this survey is the result of the City’s intent to comply with the Certified Local Government requirements.  The objective of the survey was to research, photograph and map all structures built within the City of Saline between 1829 and 1944.  The completed project includes a survey card and black and white photograph for each structure, a map of all surveyed structures, and historical and architectural text encompassing the study period.
-      </p>
-      <p>
-        All original survey material is housed by the Historic District Commission at Saline City Hall. The 24-page report is also available at Saline District Library and <a href="http://www.salinelibrary.org/pdf/salinehistory/Historical_Architectural_Survey_1994.pdf"><i class="icon-file"></i>online</a>.
-      </p>
-      </div>
-
-      <div id="useguidelines">
-      <p>
-      The City of Saline is the copyright holder for the materials in this Saline Historic Homes online collection. The materials were
-      compiled by Sue Kosky and Kathie Glynn, who composed the 1994 Historical and Architectural Survey under a contract with the City of Saline. The project was comprised of the 350 photos and informational cards documenting historic homes in Saline.
-      </p>
-      <p>
-      The City of Saline is pleased to make these materials available for research and education for which no permission is required (though attribution is appreciated).  For other uses or questions, please contact:
-      </p>
-      <p>
-      Leslee Niethamer, Director<br />
-      Saline District Library<br />
-      555 N. Maple Road Saline, MI 48176<br />
-      Telephone: (734) 429-5450<br />
-      Fax: (734) 944-0600<br />
-      <a href="http://saline.lib.mi.us/">http://saline.lib.mi.us/</a>
-      </p>
-      </div>
-
-    </div>
-  </div>
-
-</div></InsertTextInfo>
-  <InsertTextInfo2><div>
-<!-- Copy this file (info2.txt) to a collection specific web
-directory and  fill it with a description of the collection. It will
-then appear in the page=index view for the collection. -->
-</div>
-</InsertTextInfo2>
-  <InsertTextFieldInfo><div><!-- Copy this file (fieldinfo.txt) to a collection specific web directory and  fill it with field definitions and any other information that would help the user understand the fields and it will be inserted in to the collinfo view (collinfo.tpl) --></div></InsertTextFieldInfo>
-  <Subtitle></Subtitle>
-
-  <Snapshots><Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0914;viewid=SL091401.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+	<!-- XSL fallback files -->
+	<XslFallbackFileList>
+		<Filename>xsl2htmlutils.xsl</Filename>
+		<Filename>htmlhead.xsl</Filename>
+		<Filename>displayheader.xsl</Filename>
+		<Filename>browseoptions.xsl</Filename>
+		<Filename>search.xsl</Filename>
+		<Filename>fieldvalues.xsl</Filename>
+		<Filename>index.xsl</Filename>
+	</XslFallbackFileList>
+	<!-- Custom OPTIONAL XML for top-level file index.xml<2> -->
+	<CustomXml>
+	</CustomXml>
+	<DlxsGlobals>
+		<CurrentCgi>
+			<Param name="cc">sdlhomes</Param>
+			<Param name="page">index</Param>
+			<Param name="c">sdlhomes</Param>
+			<Param name="debug">xsltwrite</Param>
+		</CurrentCgi>
+		<CurrentUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?cc=sdlhomes;page=index;c=sdlhomes</CurrentUrl>
+		<UserAgent>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:81.0) Gecko/20100101 Firefox/81.0</UserAgent>
+		<ReferrerHref>
+		</ReferrerHref>
+		<Sid>b48ba14ceee04894c549c543cd7fe3dc</Sid>
+		<EffectiveLanguage>en</EffectiveLanguage>
+		<LanguageOptions>
+			<OptionalLanguage>en</OptionalLanguage>
+		</LanguageOptions>
+		<LangMap>
+			<!-- bbopenutils.xsl which serves bbopen.xsl, bbname.xsl -->
+			<!-- "items1" used by bbresults_nav.xsl SliceSummary -->
+			<!-- "portfolio" used by bbresults_nav.xsl CollectionName -->
+			<lookup id="bbopenutils">
+				<item key="portfolio">portfolio</item>
+				<item key="porthelp">
+					<b>Help</b>For Using Portfolios</item>
+				<item key="bbopenpageheader">Portfolios</item>
+				<item key="bbnamepageheader">Add&#xa0;to&#xa0;a&#xa0;New&#x0a;or Existing Portfolio</item>
+				<item key="yourport">your portfolios</item>
+				<item key="pubport">all public portfolios</item>
+				<item key="bbagname">portfolio name</item>
+				<item key="action">action</item>
+				<item key="items1">items</item>
+				<item key="shared">public</item>
+				<item key="username">owner(s)</item>
+				<item key="open3">open</item>
+				<item key="add3">add</item>
+				<item key="savename">save name</item>
+				<item key="saveowners">save owners</item>
+				<item key="bbdel3">delete...</item>
+				<item key="bbexportprep3">download...</item>
+				<item key="viewable">viewable by public</item>
+				<item key="instructionbbname">To create a<b>new</b>portfolio with the selected images, enter a name in the<b>text box</b>and click<b>Submit</b>.<br />To<b>add</b>the selected images to an<b>existing</b>portfolio, find the portfolio name in the table below and click<b>add</b>.</item>
+				<item key="0">no</item>
+				<item key="1">yes</item>
+				<item key="switch0">make&#xa0;public</item>
+				<item key="switch1">make&#xa0;private</item>
+				<item key="none present">None present.</item>
+			</lookup>
+			<!-- bbdel.xsl bbdelconf.xsl -->
+			<lookup id="bbdel">
+				<item key="successdel">Portfolio successfully deleted.</item>
+				<item key="instructionbbdel">You may open a portfolio or close this window.</item>
+				<item key="yes">Yes</item>
+				<item key="no">No</item>
+				<item key="instructionbbdelconf">Permanently delete portfolio?</item>
+				<item key="name">Name of portfolio</item>
+			</lookup>
+			<!-- bbexport.xsl -->
+			<lookup id="bbexport">
+				<item key="exportfull-image">media</item>
+				<item key="exportdescription">record</item>
+				<item key="accessdenied">The media was not included due
+					to a lack of access privileges. Sorry. You may view the record.</item>
+				<item key="index">index</item>
+				<item key="of">of</item>
+				<item key="viewonline">view online</item>
+				<item key="exportPageTitle">export</item>
+				<item key="guidelinesbuttontext">guidelines</item>
+				<item key="guidelinesTitle">Guidelines For Use</item>
+				<item key="portlastmod">portfolio last modified:</item>
+				<item key="forhelp">For help or to request permission to publish:</item>
+			</lookup>
+			<!-- bbexportprep.xsl -->
+			<lookup id="bbexportprep">
+				<item key="returntoportfolios">return to the list of portfolios</item>
+				<item key="morehelp">More Help</item>
+				<item key="imagesize">image size</item>
+				<item key="imagesizesmall">small</item>
+				<item key="imagesizemedium">medium (presentation)</item>
+				<item key="imagesizelarge">large</item>
+				<item key="imagesizelargest">largest</item>
+				<item key="download">download</item>
+				<item key="whendone1P1">When done, all of the
+					images (and/or other media) will reside on your computer for convenient
+					use. HTML pages are also included for viewing records and easy
+					navigation of images.</item>
+				<item key="long">The download may take several minutes to complete.</item>
+				<item key="portfoliodownloadsteps">Portfolio Download</item>
+				<item key="bbexportpreppageheader">Portfolio Download</item>
+				<item key="portfoliosdisabled">Portfolio functionality is
+					turned off.</item>
+				<item key="exportdisabled">Portfolio export functionality is turned
+					off.</item>
+				<item key="toomanyitemstodownload">Only the first $count items will be downloaded.</item>
+			</lookup>
+			<!-- displayheader_results.xsl --><!--<lookup id="displayheader_results_LEGACY">
+			<item key="thumbnail">images with captions</item>
+			<item key="thumbfull">images with record</item>
+			<item key="reslist">captions only</item>
+			<item key="bbthumbnail">images with captions</item>
+			<item key="bbthumbfull">images with record</item>
+			<item key="bbreslist">captions only</item>
+			<item key="prep">prep tables in use</item>
+			</lookup>
+			-->
+			<lookup id="displayheader_results">
+				<item key="thumbnail">grid</item>
+				<item key="thumbfull">grid + details</item>
+				<item key="reslist">list</item>
+				<item key="icon-thumbnail">icon-th</item>
+				<item key="icon-thumbfull">icon-picture</item>
+				<item key="icon-reslist">icon-th-list</item>
+				<item key="bbthumbnail">grid</item>
+				<item key="bbthumbfull">grid + details</item>
+				<item key="bbreslist">list</item>
+				<item key="icon-bbthumbnail">icon-th</item>
+				<item key="icon-bbthumbfull">icon-picture</item>
+				<item key="icon-bbreslist">icon-th-list</item>
+				<item key="prep">prep tables in use</item>
+			</lookup>
+			<!-- groups.xsl -->
+			<lookup id="groups">
+				<item key="groups">collection groups list</item>
+				<item key="selectgroup">Select a collection group</item>
+				<item key="instructiongroupspick">Collections are arranged into groups for searching. Click on a group name to search the collections in that group. A collection may include some content outside of the group's definition, and a collection could appear in more than one group. Click the title of a specific collection to search it alone. Sometimes it is advantageous to search a single collection. For example, search field and sorting options are often specific to the collection, allowing for a more refined search.</item>
+				<item key="more">more</item>
+				<item key="instructiongroupspick2">Some collections have a very narrow focus. Other collections are broader, and may encompass many sub-collections.  Occassionally an image appears in multiple collections, though generally there is a single authoritative source for each image.</item>
+				<item key="collections">collections</item>
+				<item key="media">images/media</item>
+				<item key="records2">records</item>
+			</lookup>
+			<!-- searchutils.xsl -->
+			<lookup id="searchutils">
+				<item key="see">see search tips</item>
+				<item key="instructioncollspick1">Select one or more databases to search. Click the database name to search it alone, often in more detail.</item>
+				<item key="instructionsearch1">To search, enter a word or phrase in a box below and select a field from the menu.</item>
+				<item key="instructionsearch2">It is not necessary to use more than one box.</item>
+				<item key="instructionsearch3">You can search all the databases in this group, or use the<b>list of databases</b>to restrict your search to a subset.</item>
+				<item key="newgroup">select a new group to search</item>
+				<item key="in">in</item>
+				<item key="rangehelp">e.g., 1954 to 1961, -825 to -800.</item>
+				<item key="only">has digital media</item>
+				<item key="PleaseSelectColl">Please select at least one database to search.</item>
+			</lookup>
+			<!-- browse.xsl, index.xsl -->
+			<lookup id="browse">
+				<item key="browse">Browse</item>
+			</lookup>
+			<!-- collinfo.xsl -->
+			<!-- index.xsl -->
+			<lookup id="index">
+				<item key="home">Home</item>
+				<item key="collinfo">database info</item>
+				<item key="closewindow">CLOSE WINDOW</item>
+				<item key="thiscoll">this collection</item><!--<item key="browseallimages">Browse all media</item>
+				<item key="browseallrecords">Browse all records</item>
+				<item key="browsesampleimages">Browse sample media</item>
+				<item key="browsesamplerecords">Browse sample records</item>
+				<item key="browsemediaaddsmods">Browse newest additions and updates</item>
+				<item key="browsemostviewed">Browse most viewed</item>
+				-->
+				<item key="browseallimages">All media</item>
+				<item key="browseallrecords">All records</item>
+				<item key="browsesampleimages">Sample media</item>
+				<item key="browsesamplerecords">Sample records</item>
+				<item key="browsemediaaddsmods">Newest additions and updates</item>
+				<item key="browsemostviewed">Most viewed</item>
+				<item key="access">Collection Access</item>
+				<item key="access1">Access to this collection is restricted to authorized users.</item>
+				<item key="access2">This collection is open to the public. You may have
+					additional privileges if you log in.</item>
+				<item key="access3">You are an authorized user of this collection.</item>
+				<item key="access4">Access restricted.</item>
+				<item key="sendcomments">Send comments on this collection to</item>
+				<item key="brief">Collection Size</item>
+				<item key="searchmulti">Search Multiple Collections</item>
+				<item key="selectagroup1">Select a group</item>
+				<item key="selectagroup2">of collections to search simultaneously. Search this collection together with others.</item>
+				<item key="numberof">Number of Images and Records Online</item>
+				<item key="images">Online Images/Media</item>
+				<item key="records">Records</item>
+			</lookup>
+			<!-- noresults.xsl -->
+			<lookup id="noresults">
+				<item key="noresults">No Results</item>
+				<item key="type_ic_range">ranges from</item>
+				<item key="type_ic_exact">is exactly</item>
+				<item key="type_default">contains the term(s)</item>
+				<item key="type_allmedia">media was added or updated within</item>
+				<item key="days">day(s).</item>
+				<item key="to">to</item>
+			</lookup>
+			<!-- results.xsl -->
+			<lookup id="results">
+				<item key="and">and</item>
+				<item key="view">view</item>
+				<item key="record">record</item>
+				<item key="digitalformat">digital format</item>
+				<item key="notavail">not available</item>
+				<item key="portfolioempty">This portfolio has no items.</item>
+				<item key="missing">no longer available</item>
+				<item key="restricted">Restricted.</item>
+				<item key="trytolocate">try to locate</item>
+				<item key="notifymaintainer">notify maintainer</item>
+				<item key="nosortvalue">no sort value</item>
+			</lookup>
+			<!-- thumbfull.xsl -->
+			<lookup id="thumbfull">
+				<item key="instructionthumbfullresults">Click on thumbnails to view larger images and full records.<br />Click "descriptive info" link to view record data to the left.</item>
+				<item key="descriptive">&lt;text</item>
+			</lookup>
+			<!-- reslist.xsl -->
+			<lookup id="reslist">
+				<item key="view4">view full record for<b>item</b>
+				</item>
+			</lookup>
+			<!-- displayheader.xsl -->
+			<lookup id="displayheader">
+				<item key="newsearch">advanced search</item>
+				<item key="quicksearch">Quick Search</item>
+			</lookup>
+			<!-- results_nav.xsl -->
+			<lookup id="results_nav">
+				<item key="to1">to</item>
+				<item key="of">of</item>
+				<item key="hits">hits</item>
+				<item key="login0">You are not logged in.</item>
+				<item key="login1">You are logged in.</item>
+				<item key="prev">previous</item>
+				<item key="next">next</item>
+				<item key="portfour">Portfolio storage is temporary.</item>
+				<item key="portone">Portfolio storage is long term.</item>
+				<item key="portthree">You do not own this portfolio.</item>
+				<item key="porttwo">You do not own this portfolio.</item>
+			</lookup>
+			<!-- bbcustomorder.xsl -->
+			<lookup id="bbcustomorder">
+				<item key="instructionbbcustomorder">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+				<item key="nocaption">no caption or caption too long.</item>
+			</lookup>
+			<!-- entry.xsl -->
+			<lookup id="entry">
+				<item key="bookmarkhelp">bookmark:</item>
+				<item key="downloadmedia">download largest size</item>
+				<item key="downloadmediacurrentsize">download current size</item>
+				<item key="newwindow">new window</item>
+				<item key="viewmediaonly">view media only</item>
+				<item key="otherviewsnothumb">view</item>
+				<item key="other">other views</item>
+				<item key="other views">other views</item>
+				<item key="other-views">other views</item>
+				<item key="full image">full image</item>
+				<item key="full-image">full-image</item>
+				<item key="description">description</item>
+				<item key="backtoresults">back to results</item>
+				<item key="previtem">&lt;&lt; previous item</item>
+				<item key="nextitem">next item &gt;&gt;</item>
+				<item key="addport">add to portfolio</item>
+				<item key="removeport">remove from portfolio</item>
+				<item key="relatedports">portfolio inclusions</item>
+				<item key="feedbacklink">Problems/comments about this item?</item>
+				<item key="feedbackreply">To request a reply, please provide your email address.</item>
+				<item key="feedbackcomments">Comments?</item>
+				<item key="feedbackusername">Include your user name?</item>
+				<item key="feedback">Feedback</item>
+			</lookup>
+			<!-- entry_imagetools.xsl -->
+			<lookup id="entry_imagetools">
+				<item key="video.sense">view</item>
+				<item key="video">video</item>
+				<item key="video.icon">icon-film</item>
+				<item key="audio.sense">listen to</item>
+				<item key="audio">audio</item>
+				<item key="audio.icon">icon-volume-down</item>
+				<item key="svg.sense">view</item>
+				<item key="svg">flash movie</item>
+				<item key="svg.icon">icon-film</item>
+				<item key="doc.sense">view</item>
+				<item key="doc">related document</item>
+				<item key="doc.icon">icon-file</item>
+				<item key="url.sense">view</item>
+				<item key="url">linked content in new window</item>
+				<item key="url.icon">icon-share</item>
+				<item key="image.sense">view</item>
+				<item key="image">image</item>
+				<item key="image.icon">icon-picture</item>
+				<item key="size">size</item>
+				<item key="nomedia">Sorry, digital media is not available for this item.</item>
+				<item key="panzoomhelp">How to interact with this image...</item>
+				<item key="tozoomin">zoom in: double-click</item>
+				<item key="tozoomout">zoom out: shift-double-click</item>
+				<item key="topan">pan: drag</item>
+				<item key="zoom">zoom</item>
+				<item key="sizes">image sizes</item>
+			</lookup>
+			<!-- tips.xsl -->
+			<lookup id="searchtips">
+				<item key="searchtips">search tips</item>
+				<item key="instructionsearchtips">
+					<p>
+						<b>Matching words:</b>The search
+						engine attempts to match any word or phrase exactly as you put it in
+						the box.</p>
+					<p>e.g.:<i>Picasso and Rembrandt</i>in a box will look
+						for</p>
+					<p>&#34;Picasso and Rembrandt&#34;</p>
+					<p>and produced no
+						results.</p>
+					<p>
+						<b>Punctuation:</b>All punctuation is treated as an
+						empty space.</p>
+					<p>
+						<b>Case</b>: The search engine is not case
+						sensitive.</p>
+					<p>
+						<b>Wildcards:</b>Use wildcard * to expand word
+						stems. This is a good way to search for variations on a
+						word.</p>
+					<p>
+						<b>Choose image collections</b>: Limit your search to only
+						those collections you choose in the image collections list.</p>
+				</item>
+			</lookup>
+			<!-- results.xsl -->
+			<lookup id="BbagOptionsMenu">
+				<item key="bbom.check">check all</item>
+				<item key="bbom.uncheck">uncheck all</item>
+				<item key="bbom.bbname">add checked to portfolio...</item>
+				<item key="bbom.remove">remove checked from portfolio</item>
+			</lookup>
+			<lookup id="viewinstruct">
+				<item key="thumbnail1">Use checkboxes to select images for adding to a
+					portfolio, then click the "add to portfolio" button. Click on
+					thumbnails to view larger images and full records.</item>
+				<item key="thumbnail0">Click on thumbnails to view larger images and full records.</item>
+				<item key="thumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+				<item key="thumbfull1">Click on thumbnails to view larger images and full records.<br />Click "descriptive info" link to view record data in this space.</item>
+				<item key="reslist1">Use checkboxes to select records for adding to a portfolio, then click the "add to portfolio" button. Click "view full record" link the full record.</item>
+				<item key="reslist0">Click "view full record" link the full record.</item>
+				<item key="bbthumbnail1">Click on thumbnails to view larger images and full records.</item>
+				<item key="bbthumbnail0">Click on thumbnails to view larger images and full records.</item>
+				<item key="bbthumbfull0">Click on thumbnails to view larger images and full records. Click "descriptive info" link to view record data in this space.</item>
+				<item key="bbthumbfull1">Click on the thumbnail image to display a
+					large image. Click on the "descriptive info" link beneath any thumbnail image to see detailed record information in this space.</item>
+				<item key="bbreslist1">Click "view full record" link the full record.</item>
+				<item key="bbreslist0">Click "view full record" link the full record</item>
+				<item key="bbcustomorder1">To change the position of any image record in this portfilio, select it's title in the list, and click an appropriate directional arrow to move it up or down.  When you are done, click the save custom order button to return to the previous display.</item>
+				<item key="bbcustomorder0">
+				</item>
+				<item key="bbexport1">The portfolio package is ready for download as a ZIP file.</item>
+				<item key="medianodownload">sorry, media is not available for
+					download.</item>
+				<item key="bbexport0">
+				</item>
+			</lookup>
+			<lookup id="sort">
+				<item key="sort">sort</item>
+				<item key="sortnot2">too many results to sort</item>
+				<item key="customize">customize order...</item>
+			</lookup>
+			<lookup id="misc">
+				<!-- alt tags for graphics -->
+				<!-- login/out -->
+				<item key="login">login</item>
+				<item key="logout">logout</item>
+				<!-- open portfolio -->
+				<item key="portfolios">portfolios</item>
+				<!-- contact / help -->
+				<item key="contact">contact</item>
+				<item key="Contact">Contact</item>
+				<item key="help">help</item>
+				<!-- appears in "index", "searchutils" -->
+				<item key="search2">Search</item>
+				<item key="databases">Databases</item>
+				<item key="collhome">collection home</item>
+				<item key="close">close</item>
+				<item key="multiple">Multiple Collections</item>
+			</lookup>
+			<lookup id="SearchFormOpsMenu">
+				<item key="And">And</item>
+				<item key="Or">Or</item>
+				<item key="Not">Not</item>
+				<item key="and not">And Not</item>
+			</lookup>
+			<lookup id="SearchFormSelMenu">
+				<item key="ends">Ends with</item>
+				<item key="contains">Contains</item>
+				<item key="phrase">Contains the phrase</item>
+				<item key="starts">Starts with</item>
+				<item key="any">Contains any of these words</item>
+				<item key="all">Contains all of these words</item>
+				<item key="ic_exact">Exactly matches</item>
+				<item key="regex">Matches</item>
+			</lookup>
+			<!-- moaaic-group, searchmaps.xsl -->
+			<lookup id="searchmaps">
+				<item key="searchmaps">Search for maps</item>
+				<item key="instructionsearch1">Enter an exact word or phrase.</item>
+			</lookup>
+			<lookup id="NoResults">
+				<item key="sorrynoresults">Sorry, no results were found when searching
+					for items where...</item>
+				<item key="pleasetry">Please try again.</item>
+				<item key="mediaonly">Including an image or other media.</item>
+			</lookup>
+		</LangMap>
+		<TemplatePath>/l1/dev/roger/web/i/image/index.xml</TemplatePath>
+		<TemplateName>index</TemplateName>
+		<XcollMode>singlecoll</XcollMode>
+		<CurrentScriptName>/cgi/i/image/image-idx</CurrentScriptName>
+		<ScriptName application="text">/cgi/t/text/text-idx</ScriptName>
+		<ScriptName application="pageviewer">/cgi/t/text/pageviewer-idx</ScriptName>
+		<ScriptName application="ww">/cgi/t/text/ww2-idx</ScriptName>
+		<ScriptName application="findaid">/cgi/f/findaid/findaid-idx</ScriptName>
+		<ScriptName application="image">/cgi/i/image/image-idx</ScriptName>
+		<BookmarkableUrl>
+		</BookmarkableUrl>
+		<AuthenticationEnabled>1</AuthenticationEnabled>
+		<UserAuthenticated>0</UserAuthenticated>
+		<AuthenticatedUsername>
+		</AuthenticatedUsername>
+		<SupportedAuthSystems>
+			<System>um</System>
+		</SupportedAuthSystems>
+		<QuickBrowse>
+		</QuickBrowse>
+		<Feed>
+			<FeedLink type="short">
+			</FeedLink>
+			<FeedLink type="long">
+			</FeedLink>
+		</Feed>
+		<TaggingEnabled>0</TaggingEnabled>
+		<CollGroupMembership>:localhist-ic:</CollGroupMembership>
+		<EncodingType>
+			<?DOC_ENCODING_TYPE_XML?>
+		</EncodingType>
+		<HeadLinks>
+			<!-- <CssLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css</CssLink> -->
+			<CssLink>/i/image/bootstrap/css/bootstrap.min.css</CssLink>
+			<CssLink>/i/image/css/imageclass.css</CssLink>
+			<CssLink>/i/image/css/imageclass-specific.css</CssLink>
+			<BootstrapLink>//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js</BootstrapLink>
+			<BootstrapLink>/i/image/jquery/jquery-migrate-1.2.1.js</BootstrapLink>
+			<BootstrapLink>//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js</BootstrapLink>
+			<!-- <BootstrapLink>/i/image/bootstrap/js/bootstrap.js</BootstrapLink> -->
+			<JavaScriptUrl>/i/image/js/jquery.placeholder.js</JavaScriptUrl>
+			<ApiUrl>/cgi/i/image/api</ApiUrl>
+			<Timestamp>20180409</Timestamp>
+			<AssetDebug>yes</AssetDebug>
+		</HeadLinks>
+	</DlxsGlobals>
+	<ExtraCSS>/i/image/css/index.css</ExtraCSS>
+	<CollName>
+		<Full>Saline Historic Homes</Full>
+		<Brief>Saline Historic Homes</Brief>
+	</CollName>
+	<JavaScriptUrl>/i/image/js/imageclass.js</JavaScriptUrl>
+	<!-- <ContactLink>'m'+'a'+'i'+'l'+'t'+'o'+':'+'s'+'d'+'l'+'p'+'h'+'o'+'t'+'o'+'s'+'-'+'h'+'e'+'l'+'p'+'@'+'u'+'m'+'i'+'c'+'h'+'.'+'e'+'d'+'u'</ContactLink>
+	<ContactText>E-mail Help</ContactText> -->
+  <ContactLink type="mailto">sdlphotos-help@umich.edu</ContactLink>
+  <ContactText>Saline Digital Collections Help</ContactText>
+	<LoginLink>
+		<Url>https://roger.quod.lib.umich.edu/cgi/dlxslogin/go?target=https%3A%2F%2Froger.quod.lib.umich.edu%2Fcgi%2Fi%2Fimage%2Fimage-idx%3Fkey_authret%3D1601991574</Url>
+		<Mode>login</Mode>
+	</LoginLink>
+	<TipsUrl>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=tips;c=sdlhomes</TipsUrl>
+	<SortOptionsMenu>
+		<HiddenVars>
+			<Variable name="cc">sdlhomes</Variable>
+			<Variable name="page">index</Variable>
+			<Variable name="c">sdlhomes</Variable>
+			<Variable name="debug">xsltwrite</Variable>
+		</HiddenVars>
+		<TotalResults>
+		</TotalResults>
+		<SortThresshold>1000</SortThresshold>
+		<ThresholdExceeded>false</ThresholdExceeded>
+		<Option>
+			<Label>(None)</Label>
+			<Value>none</Value>
+			<Focus>true</Focus>
+		</Option>
+		<Option>
+			<Label>Photo Date</Label>
+			<Value>sdlhomes_photo_date</Value>
+		</Option>
+		<Option>
+			<Label>Survey Date</Label>
+			<Value>sdlhomes_survey_dt</Value>
+		</Option>
+		<Option>
+			<Label>Photo Negative No.</Label>
+			<Value>sdlhomes_photo_neg_no</Value>
+		</Option>
+		<Name>sort</Name>
+		<Default>none</Default>
+	</SortOptionsMenu>
+	<Home>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=index;c=sdlhomes</Home>
+	<Help>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=help;c=sdlhomes</Help>
+	<Banner>
+		<Text>Saline Historic Homes</Text>
+	</Banner>
+	<OpenPortfolio>
+		<Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=bbopen</Url>
+	</OpenPortfolio>
+	<SearchLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?c=sdlhomes;page=search</SearchLink>
+	<BrowseImages>
+		<Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=sdlhomes_photo_date;q1=sdlhomes;type=boolean;rgn1=ic_all;med=1;view=thumbnail;c=sdlhomes</Url>
+		<Type>browseallimages</Type>
+	</BrowseImages>
+	<BrowseRecords>
+		<!-- brwsrec not enabled in colldb -->
+	</BrowseRecords>
+	<BrowseMediaAddsMods>
+		<!-- brwsadds not enabled in colldb -->
+	</BrowseMediaAddsMods>
+	<BrowseMostViewed>
+		<Url>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?sort=mostviewed;type=mostviewed;view=thumbnail;c=sdlhomes</Url>
+		<Type>browsemostviewed</Type>
+	</BrowseMostViewed>
+	<BrowseOptions>
+	</BrowseOptions>
+	<RestrictStatus>access2</RestrictStatus>
+	<AccessRestrictions>
+		<Status>public</Status>
+		<Public href="https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?auth=world;sort=sdlhomes_photo_date;q1=sdlhomes;type=boolean;rgn1=ic_all;view=reslist;c=sdlhomes">416</Public>
+		<Authorized>0</Authorized>
+		<Restricted>0</Restricted>
+	</AccessRestrictions>
+	<CollInfoLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=collinfo;c=sdlhomes</CollInfoLink>
+	<SearchForm>
+		<NumQs>2</NumQs>
+		<Q name="q1">
+			<Value>
+			</Value>
+			<Rgn name="rgn1">
+				<Option>
+					<Label>Anywhere in record</Label>
+					<Value>ic_all</Value>
+				</Option>
+				<Option>
+					<Label>Historic Name</Label>
+					<Value>sdlhomes_historic_name</Value>
+				</Option>
+				<Option>
+					<Label>Common Name</Label>
+					<Value>sdlhomes_common_name</Value>
+				</Option>
+				<Option>
+					<Label>District Name</Label>
+					<Value>sdlhomes_district_name</Value>
+				</Option>
+				<Option>
+					<Label>Bibliographic Reference</Label>
+					<Value>sdlhomes_ref</Value>
+				</Option>
+				<Option>
+					<Label>Photo Negative No.</Label>
+					<Value>sdlhomes_photo_neg_no</Value>
+				</Option>
+				<Name>rgn1</Name>
+				<Default>all</Default>
+			</Rgn>
+			<Op name="op2">
+				<Option>
+					<Label>And</Label>
+					<Value>And</Value>
+					<Focus>true</Focus>
+				</Option>
+				<Option>
+					<Label>Or</Label>
+					<Value>Or</Value>
+				</Option>
+				<Option>
+					<Label>Not</Label>
+					<Value>Not</Value>
+				</Option>
+				<Name>op2</Name>
+				<Default>And</Default>
+			</Op>
+			<Sel name="select1" abbr="ic_all">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_historic_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_common_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_district_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_ref">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select1" abbr="sdlhomes_photo_neg_no">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select1</Name>
+				<Default>
+				</Default>
+			</Sel>
+		</Q>
+		<Q name="q2">
+			<Value>
+			</Value>
+			<Rgn name="rgn2">
+				<Option>
+					<Label>Anywhere in record</Label>
+					<Value>ic_all</Value>
+				</Option>
+				<Option>
+					<Label>Historic Name</Label>
+					<Value>sdlhomes_historic_name</Value>
+				</Option>
+				<Option>
+					<Label>Common Name</Label>
+					<Value>sdlhomes_common_name</Value>
+				</Option>
+				<Option>
+					<Label>District Name</Label>
+					<Value>sdlhomes_district_name</Value>
+				</Option>
+				<Option>
+					<Label>Bibliographic Reference</Label>
+					<Value>sdlhomes_ref</Value>
+				</Option>
+				<Option>
+					<Label>Photo Negative No.</Label>
+					<Value>sdlhomes_photo_neg_no</Value>
+				</Option>
+				<Name>rgn2</Name>
+				<Default>all</Default>
+			</Rgn>
+			<Sel name="select2" abbr="ic_all">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_historic_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_common_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_district_name">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_ref">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+			<Sel name="select2" abbr="sdlhomes_photo_neg_no">
+				<Option>
+					<Label>all</Label>
+					<Value>all</Value>
+				</Option>
+				<Option>
+					<Label>any</Label>
+					<Value>any</Value>
+				</Option>
+				<Option>
+					<Label>phrase</Label>
+					<Value>phrase</Value>
+				</Option>
+				<Option>
+					<Label>ic_exact</Label>
+					<Value>ic_exact</Value>
+				</Option>
+				<Name>select2</Name>
+				<Default>
+				</Default>
+			</Sel>
+		</Q>
+		<HiddenVars>
+			<Variable name="type">boolean</Variable>
+			<Variable name="c">sdlhomes</Variable>
+		</HiddenVars>
+		<ResultsViewOptions>
+			<Option>
+				<Label>thumbnail</Label>
+				<Value>thumbnail</Value>
+				<Focus>true</Focus>
+			</Option>
+			<Option>
+				<Label>thumbfull</Label>
+				<Value>thumbfull</Value>
+			</Option>
+			<Option>
+				<Label>reslist</Label>
+				<Value>reslist</Value>
+			</Option>
+			<Name>view</Name>
+			<Default>thumbnail</Default>
+		</ResultsViewOptions>
+	</SearchForm>
+	<GroupsLink>https://roger.quod.lib.umich.edu/cgi/i/image/image-idx?page=groups</GroupsLink>
+	<Groups>
+		<Group GroupID="localhist-ic">Local History</Group>
+	</Groups>
+	<Stats>
+		<Records>345</Records>
+		<Images>413</Images>
+	</Stats>
+	<InsertTextInfo>
+		<div>
+			<div class="row-fluid">
+				<div class="span3" style="text-align: center">
+					<div style="margin-bottom: 8px">
+						<a href="http://saline.lib.mi.us/">
+							<img width="137" height="137" src="/s/sdlsvf/graphics/sdl_logo.gif" />
+							<br />
+							<strong>Saline District Library</strong>
+						</a>
+					</div>
+					<div>
+						<a href="http://www.salinehistory.org">
+							<img height="109" border="0" width="84" src="/s/sdlsvf/graphics/shshouse57.jpg" />
+							<br />
+							<strong>Saline Area Historical Society</strong>
+						</a>
+					</div>
+				</div>
+				<div class="span9">
+					<div class="instructiontxt">
+						<p>This<em>Historical and Architectural Survey</em>includes all structures built up to 1944 within the city limits of Saline Michigan.  Conducted in 1994 by Kosky and Glynn Associates, this survey is the result of the City’s intent to comply with the Certified Local Government requirements.  The objective of the survey was to research, photograph and map all structures built within the City of Saline between 1829 and 1944.  The completed project includes a survey card and black and white photograph for each structure, a map of all surveyed structures, and historical and architectural text encompassing the study period.</p>
+						<p>All original survey material is housed by the Historic District Commission at Saline City Hall. The 24-page report is also available at Saline District Library and<a href="http://www.salinelibrary.org/pdf/salinehistory/Historical_Architectural_Survey_1994.pdf">
+								<i class="icon-file">
+								</i>online</a>.</p>
+					</div>
+					<div id="useguidelines">
+						<p>The City of Saline is the copyright holder for the materials in this Saline Historic Homes online collection. The materials were
+							compiled by Sue Kosky and Kathie Glynn, who composed the 1994 Historical and Architectural Survey under a contract with the City of Saline. The project was comprised of the 350 photos and informational cards documenting historic homes in Saline.</p>
+						<p>The City of Saline is pleased to make these materials available for research and education for which no permission is required (though attribution is appreciated).  For other uses or questions, please contact:</p>
+						<p>Leslee Niethamer, Director<br />Saline District Library<br />555 N. Maple Road Saline, MI 48176<br />Telephone: (734) 429-5450<br />Fax: (734) 944-0600<br />
+							<a href="http://saline.lib.mi.us/">http://saline.lib.mi.us/</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</InsertTextInfo>
+	<InsertTextInfo2>
+		<div>
+			<!--
+			Copy this file (info2.txt) to a collection specific web
+			directory and  fill it with a description of the collection. It will
+			then appear in the page=index view for the collection.
+			-->
+		</div>
+	</InsertTextInfo2>
+	<InsertTextFieldInfo>
+		<div>
+			<!-- Copy this file (fieldinfo.txt) to a collection specific web directory and  fill it with field definitions and any other information that would help the user understand the fields and it will be inserted in to the collinfo view (collinfo.tpl) -->
+		</div>
+	</InsertTextFieldInfo>
+	<Subtitle>
+	</Subtitle>
+	<Snapshots>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0914;viewid=SL091401.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABQADBAYHAgEI/8QAQBAAAgEDAgMFBgQBCQkAAAAA
@@ -689,9 +982,34 @@ peJJtpRqDDOTy2zDfu7qVKgjdhrQXkEGqlQcgCJwM/Soz6Tqkjcx03UGPi0b/tSpVdHK6BqYbI0u
 6B/8Dn7V0dD1g/0C7/8AXb9qVKpo9XQNWPXT735Qt+1PLw/qX86wvB6wv+1KlTRq3s+tJLHhowzR
 PG/4h25XUqe7uNKlSrnVf//Z
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL0914</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>494 S. Ann Arbor St.</Value></Values><Label display="on">Street and No.</Label></Field><Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false"><Values><Value>Johnson House</Value></Values><Label display="on">Historic Name</Label></Field><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0915;viewid=SL091501.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0914</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>494 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>Johnson House</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0915;viewid=SL091501.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAAMEBQYHAgH/xAA5EAACAQMDAgMFBQgBBQAAAAAB
@@ -735,9 +1053,34 @@ j65ooq6Y8bUOq8gLol4FGQB4Ln9cUnJqnWrYH3ZfADyFs3Pz4oopphq931gWDfdV5uGeWtGP+KSN
 z1mVAFnqCENu3LbMp/QUUU0wNcdZSAiS11FgRg5tmP8Aiu1l6rz71nent+K0J/xRRTTGodDpcR9M
 Qi8jaKcyOWV02H8R8qKKKzqv/9k=
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL0915</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>523 S. Ann Arbor St.</Value></Values><Label display="on">Street and No.</Label></Field><Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false"><Values><Value>John Gough House</Value></Values><Label display="on">Historic Name</Label></Field><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0916;viewid=SL091601.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0915</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>523 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>John Gough House</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0916;viewid=SL091601.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAAMEBQYHAgH/xABCEAABAwMCBAMEBAsHBQAAAAAB
@@ -779,9 +1122,31 @@ VEKHmCKhzYLv2ssv7Mv5UUVvNHn4ivXazTPsqvlR+I75ja0zh7IqvlRRSjhVkv37quPujq+VJmxX
 8/sm4+9hfyoopRweH76R/g877Ov5V5+Tt9P7Gn/ZlfKiilAOG78f2RP+zqpRPDd9/dM4e1lXyoop
 Qqnhu9nra5g/8K/lS6eGrvje2S/4CqKKlGpcAQ34HDZZksuNOc9atLiSk4OO1FFFY3o//9k=
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL0916</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>525 S. Ann Arbor St.</Value></Values><Label display="on">Street and No.</Label></Field><Empty abbrev="sdlhomes_historic_name" empty="yes"><Label display="on">Historic Name</Label></Empty><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0917;viewid=SL091701.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0916</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>525 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0917;viewid=SL091701.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAUEBgIDBwH/xAA8EAACAQMDAgQDBgQCCwAAAAAB
@@ -824,9 +1189,31 @@ JZpHkt9K1eKQ8qyWcn1BGRRRTTBZ61r8SLF/Dl5LjP8AMkUx59O+aaR65qwAMvT10MnGEXfj/Kii
 mmN/+nL3KqNEvyT3/kYA/M0CU3U/h3OhOG4IaS2yP/IUUU0xHuo7Di3bQLyRFOf5Vs20HPuM1Hud
 J0TUYRBd9O3fhnn4bVkIP/bRRTTD/QbGy03TBb6ZaSWluHJ8ORWUlj3J3c0UUVgf/9k=
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL0917</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>535 S. Ann Arbor St.</Value></Values><Label display="on">Street and No.</Label></Field><Empty abbrev="sdlhomes_historic_name" empty="yes"><Label display="on">Historic Name</Label></Empty><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0918;viewid=SL091801.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0917</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>535 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0918;viewid=SL091801.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAAAAYEBQcDAQII/8QAOhAAAQMDAgQDBQUGBwAAAAAA
@@ -872,9 +1259,34 @@ NtSFKTI92d0hQ7EKyBmtAMSyJP8ACsg/0Ff+UUVKPgt2MZPujJPX+FJ/610Ey2x0DlRykeDcUj9K
 KKg6G7sJTkIVjHTSoH8q+ftuKGgtaig90ltRI/Ciimoju8UwWs5U+v8ApxnD+lV0vjmIylPKh3F0
 53AiqFFFFxc2K6C928yww7HHMUgIdBCtu+4FFFFYo//Z
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL0918</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>550 S. Ann Arbor St.</Value></Values><Label display="on">Street and No.</Label></Field><Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false"><Values><Value>William Barr House</Value></Values><Label display="on">Historic Name</Label></Field><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0919;viewid=SL091901.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0918</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>550 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>William Barr House</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0919;viewid=SL091901.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAAYFBwIDBAEI/8QAQxAAAQMDAwEDBgoGCwEAAAAA
@@ -919,9 +1331,31 @@ CIFFZ71SFqzTeYutVZJ9jF3jjLjxUhxDJIUIHINQ40pnf3RffUGiius0bBpTPHkYq+HtZP5V78Us
 KKUZp0vmx+xMh9Ua2J0zm/3LffVKooqUbE6bzQHOFvfqlVtTp7M/uS7H8A0UUosDRlnd2eFW1d2r
 jDnbqIStMGIHNFFFcaP/2Q==
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL0919</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>591 S. Ann Arbor St.</Value></Values><Label display="on">Street and No.</Label></Field><Empty abbrev="sdlhomes_historic_name" empty="yes"><Label display="on">Historic Name</Label></Empty><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0920;viewid=SL092001.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0919</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>591 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL0920;viewid=SL092001.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAABgADBAUHAgH/xAA7EAACAQIEBAQDBgILAQAAAAAB
@@ -970,9 +1404,34 @@ Ed0hsbfT1wsLDsY7kyjiiSRXamzTWpvqWEqb/JcNHIeI2Fmo82I9VfbCwsNHB4YzqQkyZbmTE7m6
 vv8AxwvwpmwvbJ6653J5bG+FhYujj8KZwdvuas+cJ/8AmPDwpnX+T1m3+wcLCxO1Hv4Uzy1vuqtH
 pyTj38KZ13yyt/4mwsLDRovA+XVWXZE8NRTywuZ2bTIpBtYb/wAMLCwsYo//2Q==
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL0920</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>605 S. Ann Arbor St.</Value></Values><Label display="on">Street and No.</Label></Field><Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false"><Values><Value>Crosby - Van Houten House</Value></Values><Label display="on">Historic Name</Label></Field><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1001;viewid=SL100101.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL0920</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>605 S. Ann Arbor St.</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>Crosby - Van Houten House</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1001;viewid=SL100101.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHAAAAQQDAQAAAAAAAAAAAAAAAAMEBgcBAgUI/8QANxAAAgEDAgMECAQHAQEAAAAA
@@ -1012,9 +1471,31 @@ bsBiiiqRFfzXUw7tJaz4LZysbg4+VH5teqQfRLraTlhtbJ/xooqkOf4o1QRbVg1DGMDLHl/hSX8V
 a0Y2Rzd4I6YYfWiigTteKNZtZGffesG/bhj96ePxrq7sOVzjAyDkZ+lFFCNJOKNTnYM3pC8sfqNK
 Q8SXsZJLXBOCMbzj5YooqETjhe/lvtIMsobcJWXvH3HyHnRRRXPeq//Z
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL1001</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>103 W. Bennett</Value></Values><Label display="on">Street and No.</Label></Field><Empty abbrev="sdlhomes_historic_name" empty="yes"><Label display="on">Historic Name</Label></Empty><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1002;viewid=SL100201.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1001</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>103 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1002;viewid=SL100201.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAAIDBAUGBwEI/8QAOhAAAgEDAgMHAgMHAgcAAAAA
@@ -1052,9 +1533,31 @@ rjNQZeznhDkn6LB+AfzFFFW76to7dm3CyTm0JHmO6Teknsz4MFwOF6j18TBfyFFFO76tqqbsqg7w
 vHYgKTsiSE4+7GvU7Lkzk2ukemsfoDRRTyq2knswt2XHdlD6oWz+Yppeyi3KaZJrpvcAfqTRRVyq
 2m2XZ9b8PVlSK6lVt8O69ftVhHytHHgLw7OP9Tk/rRRRurbS8ItforEQ90sPiJ0rsKKKKg//2Q==
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL1002</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>105 W. Bennett</Value></Values><Label display="on">Street and No.</Label></Field><Empty abbrev="sdlhomes_historic_name" empty="yes"><Label display="on">Historic Name</Label></Empty><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1002;viewid=SL100202.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1002</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>105 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1002;viewid=SL100202.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABHAGQDASIA
 AhEBAxEB/8QAHAAAAQQDAQAAAAAAAAAAAAAAAAMEBQYBAgcI/8QAQxAAAQIFAgIFBwgHCQAAAAAA
@@ -1087,9 +1590,31 @@ SCV3/WqOIi5yg1effU/OUOlTDxATvLq749sEEZxkOVNTpGev/h2ji/e4s2/7Rg6Snjjydoxt2lxf
 80EEbhyMpvQU3ONrS5Q6WncLXbeWLey8V53g/UFK/u22U+jcD+cEEbGaj3uEGpErIak5RxPYelAv
 7zCR4R6qGf0bK/8AIT/GCCN2muqcONO1HTemXJKoMtsvKmVuBKFhQ2kJANx6jBBBBL//2Q==
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL1002</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>105 W. Bennett</Value></Values><Label display="on">Street and No.</Label></Field><Empty abbrev="sdlhomes_historic_name" empty="yes"><Label display="on">Historic Name</Label></Empty><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1003;viewid=SL100301.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1002</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>105 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1003;viewid=SL100301.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAAYEBQIDBwgB/8QANxAAAgECBAQEBAMHBQAAAAAA
@@ -1140,9 +1665,31 @@ MJlRAo/gzBASKicToeviKm/2xc0/wtyiBNIpIfcyMTgwYvqiTH8NcmT/AKVCd7+KIk/mcbx8P8qR
 gyUdCpG4IgAt+mDBieqCq4Byusp2hno6UqxvdIwrA9wRvfGrK/h/l+TlvlxK6sunRKwZR+mDBhui
 5gyKCEbQotuyWxvjoIozZI9N9zZbYMGJsSOWYwFVTb2wYMGIr//Z
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL1003</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>201 W. Bennett</Value></Values><Label display="on">Street and No.</Label></Field><Empty abbrev="sdlhomes_historic_name" empty="yes"><Label display="on">Historic Name</Label></Empty><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1004;viewid=SL100401.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1003</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>201 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1004;viewid=SL100401.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAAUDBAYHAgH/xABBEAACAQMCAwMHBwkJAAAAAAAB
@@ -1178,9 +1725,34 @@ xFZ2bxn1llFqWTrsNtxV2CTUYVIe1uwq4GYonJbxx3UUUole4up/3e9Yn/Ftm/mteDbzknn01mBH
 +X/6oopRC9hHn0tCZs9fmCf+NQ/IdqScaH25HPZ/0AzRRUob6ZpEaW750q2jy+cC1K52G+9FFFQf
 /9k=
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL1004</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>202 W. Bennett</Value></Values><Label display="on">Street and No.</Label></Field><Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false"><Values><Value>Gross Farm Equipment</Value></Values><Label display="on">Historic Name</Label></Field><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1005;viewid=SL100501.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1004</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>202 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>Gross Farm Equipment</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1005;viewid=SL100501.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABGAGQDASIA
 AhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAABAUABgECAwcI/8QAPRAAAgEDAgMFAgsGBwAAAAAA
@@ -1218,9 +1790,31 @@ Su0vQGw8FahdSlXks0Ub4V32/Cm1rwIsKj4i1eQDHO0z7+uMYqVKLaTNOFY+UAWNvnpkXTj/AGVv
 4vogxH8d63j+CuflHa6nFzeIWM4qVKz9VD4Pg5jtu8HgY+bcxo5eFLpBhZbfAHTJ/tUqVbUY2Gh3
 NvAyM8Jy2difIelSpUrKf//Z
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL1005</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>203 W. Bennett</Value></Values><Label display="on">Street and No.</Label></Field><Empty abbrev="sdlhomes_historic_name" empty="yes"><Label display="on">Historic Name</Label></Empty><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1006;viewid=SL100601.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1005</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>203 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1006;viewid=SL100601.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAUEBgIDBwH/xAA9EAACAQMCAwQGCQEIAwAAAAAB
@@ -1257,9 +1851,31 @@ ibcq2PH7tKLbhLh+3ndZoLqZUIYSSFmVx4AADJ8iKKKaN62+h28wa30SftF3UpG4x5dcVJbUVjia
 OLQgyt1Dod//AFoooBdY1V1IW1W3UHCiO3JPvP8AFLNXsL/XFEF4snZnDAPnHl0UY99FFTRa+CtB
 j0rQ3hWS4bnmaQ9opyCQowPLaiiisXqv/9k=
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL1006</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>218 W. Bennett</Value></Values><Label display="on">Street and No.</Label></Field><Empty abbrev="sdlhomes_historic_name" empty="yes"><Label display="on">Historic Name</Label></Empty><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1101;viewid=SL110101.TIF">
-    <Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1006</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>218 W. Bennett</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_historic_name" empty="yes">
+						<Label display="on">Historic Name</Label>
+					</Empty>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+		<Snapshot href="/cgi/i/image/image-idx?c=sdlhomes;entryid=x-SL1101;viewid=SL110101.TIF">
+			<Thumbnail src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIATgBOAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
 HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
 MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAGQDASIA
 AhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAABQYABwEDBAII/8QAOxAAAQMDAgMHAgMGBQUAAAAA
@@ -1308,15 +1924,39 @@ x596VrQVISpBSoIUCSRqI39B81KlTRrjWlZbU2uI4S42A2tTZ2JHXp50BRbJCVd+NIzzCnHJUMAH
 r09DUqU0dbXD90lTFcq1zihROj93Vv8AlTNB+mt+ehB2RyGHsApacd67b5Izg+lSpUtFg8I2J7hy
 ydifWhbinVOnlkkDONs+PSpUqVnVf//Z
 " />
-<Record name="result"><Section name="default"><Field abbrev="sdlhomes_id" searchfield="false" sortfield="false"><Values><Value>SL1101</Value></Values><Label display="on">Record ID</Label></Field><Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false"><Values><Value>100 Hall</Value></Values><Label display="on">Street and No.</Label></Field><Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false"><Values><Value>Schleh</Value></Values><Label display="on">Historic Name</Label></Field><Empty abbrev="sdlhomes_common_name" empty="yes"><Label display="on">Common Name</Label></Empty></Section></Record></Snapshot>
-</Snapshots>
-
-  <JavaScriptFooterUrl>/i/image/vendor/jquery.equalizecols.js</JavaScriptFooterUrl>
-
-  <ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
-
-  <BannerImage>https://quod.lib.umich.edu/cgi/i/image/api/image/sdlhomes:SL1301:SL130101.TIF/full/res:2/0/native.jpg</BannerImage>
-  <CollDescr>
-    Saline Historic Homes is a collection of photographs from a Historical and Architectural Survey that includes all structures built up to 1944 within the city limits of Saline, Michigan. Conducted in 1994 by Kosky and Glynn Associates, this survey is the result of the City's intent to comply with the Certified Local Government requirements. The objective of the survey was to research, photograph and map all structures built within the City of Saline between 1829 and 1944. The completed project includes a survey card and black and white photograph for each structure, a map of all surveyed structures, and historical and architectural text encompassing the study period.
-  </CollDescr>
+			<Record name="result">
+				<Section name="default">
+					<Field abbrev="sdlhomes_id" searchfield="false" sortfield="false">
+						<Values>
+							<Value>SL1101</Value>
+						</Values>
+						<Label display="on">Record ID</Label>
+					</Field>
+					<Field abbrev="sdlhomes_street_no" searchfield="false" sortfield="false">
+						<Values>
+							<Value>100 Hall</Value>
+						</Values>
+						<Label display="on">Street and No.</Label>
+					</Field>
+					<Field abbrev="sdlhomes_historic_name" searchfield="false" sortfield="false">
+						<Values>
+							<Value>Schleh</Value>
+						</Values>
+						<Label display="on">Historic Name</Label>
+					</Field>
+					<Empty abbrev="sdlhomes_common_name" empty="yes">
+						<Label display="on">Common Name</Label>
+					</Empty>
+				</Section>
+			</Record>
+		</Snapshot>
+	</Snapshots>
+	<JavaScriptFooterUrl>/i/image/vendor/jquery.equalizecols.js</JavaScriptFooterUrl>
+	<ExtraIECSS test="lt IE 8">/i/image/css/ie7.css</ExtraIECSS>
+	<BannerImage>https://quod.lib.umich.edu/cgi/i/image/api/image/sdlhomes:SL1301:SL130101.TIF/full/res:2/0/native.jpg</BannerImage>
+  <CollDescr>Saline Historic Homes is a collection of photographs from a Historical and Architectural Survey that includes all structures built up to 1944 within the city limits of Saline, Michigan. Conducted in 1994 by Kosky and Glynn Associates, this survey is the result of the City's intent to comply with the Certified Local Government requirements. The objective of the survey was to research, photograph and map all structures built within the City of Saline between 1829 and 1944. The completed project includes a survey card and black and white photograph for each structure, a map of all surveyed structures, and historical and architectural text encompassing the study period.</CollDescr>
+  <CollectionLinks>
+    <Link href="http://saline.lib.mi.us/">Saline District Library</Link>
+    <Link href="http://www.salinehistory.org/">Saline Area Historical Society</Link>
+  </CollectionLinks>
 </Top>

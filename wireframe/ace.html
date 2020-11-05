@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wireframe View</title>
+    <!-- <link rel="stylesheet" href="css/wireframe.css" /> -->
+    <script>
+
+    </script>
+    <style>
+      #editor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js"
+      integrity="sha512-GoORoNnxst42zE3rYPj4bNBm0Q6ZRXKNH2D9nEmNvVF/z24ywVnijAWVi/09iBiVDQVf3UlZHpzhAJIdd9BXqw=="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-xml.min.js"
+      integrity="sha512-Fj15cLqCOfDn3bL+l5lgB8yCiaTkmuMHDXbCXCPQVEC02pU4hpk9UzilPXIP385nbVji+tzwdPsQfUQ2W3WAuQ=="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/worker-base.min.js"
+      integrity="sha512-/bnVfobiMfvlWRpMlkqW7nIU0c19qRJgEGWqR65/1zTSrrlanrt42E0f9nKagxZ/lktD2bKLgaZ4RPVzbvsmXA=="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/worker-xml.min.js"
+      integrity="sha512-xOUYa5/BQgLj8cgBXfqtA2m84aLMEPWHY/zjisCuK2DNn/ymPHUCAz8Oi9Huk8u/vYSuACUNTiy5suQ3g68peA=="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-solarized_dark.min.js"
+      integrity="sha512-C8HAKGUCaQ3xszA3lnPnQSFz77YnZrRoZX9L/oY0mvpv9pGpv3mEFznfkeY0Sr6gX3GuD4QljPjRnlbybHGpDg=="
+      crossorigin="anonymous"></script>
+
+    <script src="./js/xml-formatter.js"></script>
+
+    <link rel="icon"
+      href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em'>&lt;text y='.9em'>🎃&lt;/text>&lt;/svg>" />
+
+  </head>
+  <body>
+    <div id="editor"></div>
+    <script>
+      var inputFilename = '/' + location.search.substr(1);
+      document.title += ' : ' + location.search.substr(1);
+    </script>
+    <script>
+      var processor = new XSLTProcessor();
+
+      function loadXMLDoc(filename) {
+        var xhttp = new XMLHttpRequest();
+        console.log("AHOY", filename);
+        xhttp.open("GET", filename, false);
+        xhttp.send("");
+        return xhttp.responseXML;
+      }
+
+      var inputDocument;
+      var xsltDocument;
+      var resultDocument;
+
+      var baseName = inputFilename.split('/').pop();
+      inputDocument = loadXMLDoc(inputFilename);
+
+      var now = Date.now();
+      var transformDocXML = `<?xml version="1.0" encoding="UTF-8" ?>
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat">
+  <xsl:import href="/xsl/social.wireframe.xsl?now=${now}" />
+  <xsl:import href="/xsl/${baseName.replace('.xml', '.wireframe.xsl')}?_=${now}" />
+  <xsl:import href="${inputFilename.replace('.xml', '.wireframe.xsl')}?_=${now}" />
+  <xsl:import href="/xsl/wireframe.xsl?_=${now}" />
+</xsl:stylesheet>`;
+
+console.log(transformDocXML);
+      var parser = new DOMParser();
+      var transformDoc = parser.parseFromString(transformDocXML, "text/xml");
+
+      processor.reset();
+
+      try {
+        processor.importStylesheet(transformDoc);
+      } catch(err) {
+        console.log(err);
+      }
+
+      resultDocument = processor.transformToFragment(inputDocument, document);
+
+      // and then add all the classes
+      var style = document.createElement('style');
+      document.head.appendChild(style);
+
+      var elements = resultDocument.querySelectorAll('*');
+      var seen = {};
+      for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
+        if (seen[element.tagName]) { continue; }
+        seen[element.tagName] = true;
+        style.sheet.insertRule(`${element.localName}::before { content: '<${element.tagName}>'; }`);
+        style.sheet.insertRule(`${element.localName}::after { content: '</${element.tagName}>'; }`);
+      }
+          
+      console.log(resultDocument);
+      // document.body.appendChild(resultDocument);
+
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/solarized_dark");
+      editor.session.setMode("ace/mode/xml");
+      editor.setShowPrintMargin(false);
+      editor.container.style.lineHeight = 1.5;
+      editor.setOptions({
+        fontFamily: 'Roboto Mono',
+        fontSize: 18,
+        wrap: true,
+        tabSize: 2,
+        useSoftTabs: true,
+        indentedSoftWrap: false
+      })
+      var serializer = new XMLSerializer();
+      var formatter = require('xml-formatter');
+      // console.log(serializer.serializeToString(resultDocument));
+      // console.log(formatter(serializer.serializeToString(resultDocument)));
+      editor.setValue('<span></span>');
+      console.log("EDITOR VALUE", editor.getValue());
+      // editor.clearSelection();
+      // editor.gotoLine(1);
+      // editor.scrollToLine(1, 1, true);
+      // editor.focus();
+      editor.setReadOnly(true);
+        setTimeout(function () {
+          editor.setValue(formatter(serializer.serializeToString(resultDocument), { collapseContent: true }));
+        }, 5000);
+    </script>
+  </body>
+</html>

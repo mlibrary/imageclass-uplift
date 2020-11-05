@@ -29,12 +29,15 @@
         </xsl:if>
         <xsl:call-template name="get-collection-title" />
         <xsl:call-template name="get-collection-subtitle" />
-        <qbat:nav>
+        <qbat:nav slot="browse">
           <xsl:comment>browse records?</xsl:comment>
           <xsl:if test="normalize-space(//BrowseRecords)">
             <qbat:link href="{//BrowseRecords}">Browse the collection records</qbat:link>
           </xsl:if>
           <qbat:link href="{//BrowseImages}">Browse the collection images</qbat:link>
+        </qbat:nav>
+        <qbat:nav slot="links">
+          <xsl:comment>IN THIS COLLECTION</xsl:comment>
         </qbat:nav>
         <qbat:search-form />
       </qbat:collection-header>
@@ -51,6 +54,10 @@
           <xsl:apply-templates select="//InsertTextInfo//div[@id='useguidelines']" mode="copy-guts" />
         </qbat:block>
       </qbat:main>
+      <qbat:related-collections>
+      </qbat:related-collections>
+      <qbat:contact>
+      </qbat:contact>
       <qbat:message>Message recived, La Jolla</qbat:message>
     </qbat:root>
   </xsl:template>
@@ -95,15 +102,23 @@
         <xsl:for-each select="//Snapshot">
           <qbat:link href="{@href}">
             <img src="{Thumbnail/@src}">
-              <xsl:attribute name="alt">
+              <!-- <xsl:attribute name="alt">
                 <xsl:for-each select="Record//Value">
                   <xsl:value-of select="." />
                   <xsl:if test="position() &lt; last()">
                     <xsl:text> / </xsl:text>
                   </xsl:if>
                 </xsl:for-each>
-              </xsl:attribute>
+              </xsl:attribute> -->
             </img>
+            <span>
+              <xsl:for-each select="Record//Value">
+                <xsl:value-of select="." />
+                <xsl:if test="position() &lt; last()">
+                  <xsl:text> / </xsl:text>
+                </xsl:if>
+              </xsl:for-each>
+            </span>
           </qbat:link>
         </xsl:for-each>
       </qbat:thumbnail-list>

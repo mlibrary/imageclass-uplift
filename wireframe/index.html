@@ -53,6 +53,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/theme/solarized.min.css"
       integrity="sha512-9eh7EKENNB3CJcWthLysOUEcOw1hCVES0IoNcgLeKRgcG1j1HRNXST3b1i7SV/XQEFGAvg7RMm5XbHfdaA0juQ=="
       crossorigin="anonymous" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/theme/shadowfox.min.css"
+      integrity="sha512-Xt1Gi99yJFMZ0ocjkdHqKWLjtb/l8pzJo5cCmHV2GvBFwJiOCLR2HXQBrcFmqY6i8+gXnRaKTGzoBVOl3YUwjw=="
+      crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/theme/rubyblue.min.css"
+      integrity="sha512-pt+OhZW7o2pmHEahNFroPWkGR89L0tmDqCzXK+7WM1vGLtUyxms1JxZsXgJbOdFwylRnEt0yHnU6y2uAs40FxQ=="
+      crossorigin="anonymous" />
 
     <script src="./js/xml-formatter.js"></script>
 
@@ -138,13 +146,26 @@ console.log(transformDocXML);
       var formatter = require('xml-formatter');
       var xmldata = formatter(serializer.serializeToString(resultDocument), { collapseContent: true });
 
+      // gruvbox-dark
+      // duotone-light
+      // cobalt
+      // ayu-dark
+      // abcdef
+      // mbo
+      // pastel-on-dark
+      // rubyblue
+      // shadowfox
+      // vibrant-ink
+      // xq-dark
+
       var editor = CodeMirror(document.querySelector('#editor'),
         {
           value: xmldata,
-          mode: 'xml',
+          mode: 'text/xml',
           tabSize: 2,
           readOnly: true,
-          theme: 'solarized dark',
+          // theme: 'solarized dark',
+          theme: 'shadowfox',
           foldGutter: true,
           lineNumbers: true,
           lineWrapping: false,

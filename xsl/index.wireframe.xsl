@@ -15,13 +15,13 @@
           <xsl:call-template name="build-social-facebook" />
         </qq:block>
       </qq:head>
-      <m-website-header name="Digital Collections">
+      <qq:m-website-header name="Digital Collections">
         <qq:nav>
           <qq:link href="{//Help}">Help</qq:link>
           <qq:link href="{//OpenPortfolio/Url}">Portfolios</qq:link>
           <xsl:call-template name="build-login-link" />
         </qq:nav>
-      </m-website-header>
+      </qq:m-website-header>
       <qq:collection-header>
         <xsl:if test="//BannerImage">
           <xsl:attribute name="src">

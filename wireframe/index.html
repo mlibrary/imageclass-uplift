@@ -2,10 +2,11 @@
 <html>
   <head>
     <title>Wireframe View</title>
-    <!-- <link rel="stylesheet" href="css/wireframe.css" /> -->
-    <script>
 
-    </script>
+    <link href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css"  rel="stylesheet"/>
+    <script type="module"  src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/@umich-lib/components@v1/dist/umich-lib/umich-lib.js"></script>
+
     <style>
       #editor {
         position: absolute;
@@ -13,6 +14,27 @@
         right: 0;
         bottom: 0;
         left: 0;
+      }
+
+      #output {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      #controls {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        background: rgba(0,0,0,0.25);
+        /*color: #eee;*/
+        padding: 0.5rem;
+        z-index: 5000;
+        /*border: 2px solid #777;*/
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js"
@@ -75,11 +97,25 @@
         font-family: 'Roboto Mono';
         font-size: 18px;
       }
+
+      body[data-mode="output"] #editor {
+        display: none;
+      }
+
+      body[data-mode="editor"] #output {
+        display: none;
+      }
+
     </style>
 
   </head>
-  <body>
+  <body data-mode="output">
     <div id="editor"></div>
+    <iframe id="output"></iframe>
+    <div id="controls">
+      <button id="action-toggle-mode" class="bg-blue-100 text-teal-400 px-4 py-3 rounded cursor-pointer font-bold hover:shadow-outline text-base no-underline">Toggle</button>
+    </div>
+
     <script>
       var inputFilename = '/' + location.search.substr(1);
       document.title += ' : ' + location.search.substr(1);
@@ -98,80 +134,150 @@
       var inputDocument;
       var xsltDocument;
       var resultDocument;
+      var preprocessDocument;
+
+      preprocessDocument = loadXMLDoc("../xsl/preprocess_import.xsl");
 
       var baseName = inputFilename.split('/').pop();
       inputDocument = loadXMLDoc(inputFilename);
 
       var now = Date.now();
       var transformDocXML = `<?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:qq="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
   <xsl:import href="/xsl/social.wireframe.xsl?now=${now}" />
   <xsl:import href="/xsl/${baseName.replace('.xml', '.wireframe.xsl')}?_=${now}" />
   <xsl:import href="${inputFilename.replace('.xml', '.wireframe.xsl')}?_=${now}" />
   <xsl:import href="/xsl/wireframe.xsl?_=${now}" />
 </xsl:stylesheet>`;
 
-console.log(transformDocXML);
+      console.log(transformDocXML);
+
       var parser = new DOMParser();
       var transformDoc = parser.parseFromString(transformDocXML, "text/xml");
 
+      var _resolve_imports = function(xmldoc) {
+        var imports = Array.prototype.slice.call(xmldoc.querySelectorAll('import'));
+        while ( imports.length ) {
+          var importNode = imports.shift();
+          var parentNode = importNode.parentNode;
+          var importDocument = loadXMLDoc(importNode.getAttribute('href'));
+          var children = importDocument.documentElement.children;
+          for(var i = 0; i < children.length; i++) {
+            var possibleNode = children[i];
+            var expandedNode = xmldoc.importNode(possibleNode, true);
+
+            if ( possibleNode.nodeName == 'xsl:template' && possibleNode.hasAttribute('name') ) {
+              // can only be one of these
+              var checkNode = xmldoc.querySelector(`template[name="${possibleNode.getAttribute('name')}"]`);
+              if ( checkNode ) {
+                console.log("REMOVING", checkNode);
+                var checkNodeParent = checkNode.parentNode;
+                checkNodeParent.removeChild(checkNode);
+                // checkNodeParent.replaceChild(expandedNode, checkNode);
+              }
+            }
+
+            var insertedNode = parentNode.insertBefore(expandedNode, importNode);
+            if ( insertedNode.name == 'xsl:import' ) {
+              imports.append(insertedNode);
+            }
+
+          }
+          parentNode.removeChild(importNode);
+        }
+      }
+
+      _resolve_imports(transformDoc);
+      console.log(transformDoc);
+
+      xsltDocument = transformDoc;
       processor.reset();
 
+
       try {
-        processor.importStylesheet(transformDoc);
+        processor.importStylesheet(xsltDocument);
       } catch(err) {
         console.log(err);
       }
 
-      resultDocument = processor.transformToFragment(inputDocument, document);
-
-      // // and then add all the classes
-      // var style = document.createElement('style');
-      // document.head.appendChild(style);
-
-      // var elements = resultDocument.querySelectorAll('*');
-      // var seen = {};
-      // for (var i = 0; i < elements.length; i++) {
-      //   var element = elements[i];
-      //   if (seen[element.tagName]) { continue; }
-      //   seen[element.tagName] = true;
-      //   style.sheet.insertRule(`${element.localName}::before { content: '<${element.tagName}>'; }`);
-      //   style.sheet.insertRule(`${element.localName}::after { content: '</${element.tagName}>'; }`);
-      // }
-          
-      console.log(resultDocument);
-      // document.body.appendChild(resultDocument);
+      // resultDocument = processor.transformToFragment(inputDocument, document);
+      try {
+        resultDocument = processor.transformToDocument(inputDocument);
+      } catch(err) {
+        console.log(err);
+      }
 
       var serializer = new XMLSerializer();
       var formatter = require('xml-formatter');
-      var xmldata = formatter(serializer.serializeToString(resultDocument), { collapseContent: true });
+      var editor;
+      var output = document.querySelector('#output');
 
-      // gruvbox-dark
-      // duotone-light
-      // cobalt
-      // ayu-dark
-      // abcdef
-      // mbo
-      // pastel-on-dark
-      // rubyblue
-      // shadowfox
-      // vibrant-ink
-      // xq-dark
+      var handleEditor = function() {
+        document.body.dataset.mode = 'editor';
 
-      var editor = CodeMirror(document.querySelector('#editor'),
-        {
-          value: xmldata,
-          mode: 'text/xml',
-          tabSize: 2,
-          readOnly: true,
-          // theme: 'solarized dark',
-          theme: 'shadowfox',
-          foldGutter: true,
-          lineNumbers: true,
-          lineWrapping: false,
-          gutters: [ 'CodeMirror-linenumbers', 'CodeMirror-foldgutter']
-        }
-      );
+        var xmldata = formatter(serializer.serializeToString(resultDocument), { collapseContent: true });
+
+        editor = CodeMirror(document.querySelector('#editor'),
+          {
+            value: xmldata,
+            mode: 'text/xml',
+            tabSize: 2,
+            readOnly: true,
+            // theme: 'solarized dark',
+            theme: 'shadowfox',
+            foldGutter: true,
+            lineNumbers: true,
+            lineWrapping: false,
+            gutters: [ 'CodeMirror-linenumbers', 'CodeMirror-foldgutter']
+          }
+        );
+      }
+
+      var xmldata; var xsldata;
+      var handleOutput = function() {
+        document.body.dataset.mode = 'output';
+        output.style.visibility = 'hidden';
+
+        var ts; var tsIdx = 0;
+        ts = setInterval(function() {
+          if ( output.contentDocument && output.contentDocument.documentElement.dataset.loaded == 'true' ) {
+            clearInterval(ts);
+            output.style.visibility = 'visible';
+            return;
+          }
+          tsIdx += 1;
+          console.log("-- tick/tock", tsIdx);
+        }, 100);
+
+        var serializerDoc = loadXMLDoc("../xsl/wireframe2dsl.xsl");
+        console.log(serializerDoc);
+
+        processor.reset();
+        processor.importStylesheet(serializerDoc);
+
+        // -- chrome won't transform into a fragment ??
+        // var finalDocument = processor.transformToFragment(resultDocument, document);
+        var finalDocument = processor.transformToDocument(resultDocument);
+        xmldata = serializer.serializeToString(finalDocument);
+        console.log(xmldata);
+
+        output.setAttribute('srcdoc', xmldata);
+      }
+
+      var handlers = {
+        output: handleOutput,
+        editor: handleEditor
+      };
+
+      var actionToggle = document.querySelector('#action-toggle-mode');
+      actionToggle.addEventListener('click', (event) => {
+        var target = ( document.body.dataset.mode == 'output' ) ? 'editor' : 'output'
+        document.body.dataset.mode = target;
+        handlers[target]();
+      })
+
+      handleEditor();
+
 
 
     </script>

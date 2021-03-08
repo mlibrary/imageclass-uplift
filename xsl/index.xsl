@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:quod="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
 
   <!-- <xsl:import href="./components/layout.xsl" /> -->
   <!-- <xsl:import href="./components/wireframe.xsl" /> -->
@@ -34,7 +34,7 @@
     </xsl:variable>
     <xsl:variable name="result" select="exsl:node-set($result-tmp)" />
 
-    <root xmlns:quod="http://dlxs.org/quod">
+    <root xmlns:qbat="http://dlxs.org/quod">
       <style>
         <xsl:text>root::before { content: '&lt;root>' }</xsl:text>
         <xsl:text>root::after { content: '&lt;/root>' }</xsl:text>

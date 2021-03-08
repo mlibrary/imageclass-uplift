@@ -143,7 +143,7 @@
 
       var now = Date.now();
       var transformDocXML = `<?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:qq="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
   <xsl:import href="/xsl/social.wireframe.xsl?now=${now}" />
   <xsl:import href="/xsl/${baseName.replace('.xml', '.wireframe.xsl')}?_=${now}" />
   <xsl:import href="${inputFilename.replace('.xml', '.wireframe.xsl')}?_=${now}" />

@@ -1,11 +1,11 @@
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qq="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qui="http://dlxs.org/quombat/ui" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes" />
 
   <xsl:template match="/">
     <html>
       <head>
         <title>FINAL TRANSFORM</title>
-        <xsl:apply-templates select="//qq:block[@slot='meta-social']" mode="copy-guts" />
+        <xsl:apply-templates select="//qui:block[@slot='meta-social']" mode="copy-guts" />
         <link href="https://unpkg.com/@umich-lib/css@v1/dist/umich-lib.css"  rel="stylesheet"/>
 
         <script>
@@ -24,41 +24,41 @@
       </head>
       <body class="mb-8">
         <m-universal-header></m-universal-header>
-        <xsl:apply-templates select="//qq:m-website-header" />
+        <xsl:apply-templates select="//qui:m-website-header" />
 
         <h1 class="text-xl p-9">
-          <xsl:value-of select="//qq:head/qq:title" />
+          <xsl:value-of select="//qui:head/qui:title" />
         </h1>
 
         <main>
           <xsl:attribute name="class">
-            <xsl:if test="//qq:sidebar">
+            <xsl:if test="//qui:sidebar">
               <xsl:text>grid grid-cols-sidebar gap-2</xsl:text>
             </xsl:if>
           </xsl:attribute>
-          <xsl:apply-templates select="//qq:sidebar" />
-          <xsl:apply-templates select="//qq:main" />
+          <xsl:apply-templates select="//qui:sidebar" />
+          <xsl:apply-templates select="//qui:main" />
         </main>
 
       </body>
     </html>
   </xsl:template>
 
-  <xsl:template match="qq:m-website-header">
+  <xsl:template match="qui:m-website-header">
     <m-website-header name="{@name}">
-      <xsl:apply-templates select="qq:nav" />
+      <xsl:apply-templates select="qui:nav" />
     </m-website-header>
   </xsl:template>
 
-  <xsl:template match="qq:nav">
+  <xsl:template match="qui:nav">
     <nav class="flex flex-row justify-end">
-      <xsl:apply-templates select="qq:link">
+      <xsl:apply-templates select="qui:link">
         <xsl:with-param name="class">block ml-4 text-sm font-extrabold tracking-wider uppercase text-gray-umich-lib hover:underline focus:outline focus:underline</xsl:with-param>
       </xsl:apply-templates>
     </nav>
   </xsl:template>
 
-  <xsl:template match="qq:link">
+  <xsl:template match="qui:link">
     <xsl:param name="class" />
     <a href="{@href}">
       <xsl:if test="normalize-space($class)">
@@ -68,7 +68,7 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="qq:href" mode="echo">
+  <xsl:template match="qui:href" mode="echo">
     <xsl:variable name="href">
       <xsl:choose>
         <xsl:when test="@type = 'mailto'">
@@ -83,29 +83,29 @@
     <a href="{$href}"><xsl:value-of select="." /></a>
   </xsl:template>
 
-  <xsl:template match="qq:sidebar">
+  <xsl:template match="qui:sidebar">
     <section class="px-9">
       <nav>
-        <xsl:apply-templates select="qq:panel" />
+        <xsl:apply-templates select="qui:panel" />
       </nav>
     </section>
   </xsl:template>
 
-  <xsl:template match="qq:panel">
+  <xsl:template match="qui:panel">
     <div class="mt-9 mb-2 text-sm">
       <xsl:apply-templates />
     </div>
   </xsl:template>
 
-  <xsl:template match="qq:panel/qq:header">
+  <xsl:template match="qui:panel/qui:header">
     <h2 class="text-neutral-300 uppercase font-semibold pb-2">
       <xsl:apply-templates select="." mode="copy-guts" />
     </h2>
   </xsl:template>
 
-  <xsl:template match="qq:panel/qq:nav">
+  <xsl:template match="qui:panel/qui:nav">
     <ul>
-      <xsl:for-each select="qq:link">
+      <xsl:for-each select="qui:link">
         <li class="py-1">
           <a href="{@href}" class="text-teal-400 underline">
             <xsl:apply-templates select="." mode="copy-guts" />
@@ -115,17 +115,17 @@
     </ul>
   </xsl:template>
 
-  <xsl:template match="qq:panel/qq:block-contact">
+  <xsl:template match="qui:panel/qui:block-contact">
     <p>
-      <xsl:value-of select="qq:span" />
+      <xsl:value-of select="qui:span" />
       <br />
       <xsl:text>(</xsl:text>
-      <xsl:apply-templates select="qq:href" mode="echo" />
+      <xsl:apply-templates select="qui:href" mode="echo" />
       <xsl:text>)</xsl:text>
     </p>
   </xsl:template>
 
-  <xsl:template match="qq:main">
+  <xsl:template match="qui:main">
     <section class="px-9">
       <pre>MAIN</pre>
     </section>

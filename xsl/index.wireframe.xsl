@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:quod="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qbat="http://dlxs.org/quombat" xmlns:qq="http://dlxs.org/quombat/ui">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dlxs="http://dlxs.org" xmlns:qbat="http://dlxs.org/quombat" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl" xmlns:qui="http://dlxs.org/quombat/ui">
 
   <!-- <xsl:import href="social.wireframe.xsl" /> -->
 
   <xsl:template match="Top">
-    <qq:root xmlns="http://www.w3.org/1999/xhtml">
+    <qui:root xmlns="http://www.w3.org/1999/xhtml">
       <!-- fills html/head-->
-      <qq:head>
-        <qq:title>
+      <qui:head>
+        <qui:title>
           <xsl:value-of select="//CollName/Brief" />
-        </qq:title>
-        <qq:block slot="meta-social">
+        </qui:title>
+        <qui:block slot="meta-social">
           <xsl:call-template name="build-social-twitter" />
           <xsl:call-template name="build-social-facebook" />
-        </qq:block>
-      </qq:head>
-      <qq:m-website-header name="Digital Collections">
-        <qq:nav>
-          <qq:link href="{//Help}">Help</qq:link>
-          <qq:link href="{//OpenPortfolio/Url}">Portfolios</qq:link>
+        </qui:block>
+      </qui:head>
+      <qui:m-website-header name="Digital Collections">
+        <qui:nav>
+          <qui:link href="{//Help}">Help</qui:link>
+          <qui:link href="{//OpenPortfolio/Url}">Portfolios</qui:link>
           <xsl:call-template name="build-login-link" />
-        </qq:nav>
-      </qq:m-website-header>
-      <qq:collection-header>
+        </qui:nav>
+      </qui:m-website-header>
+      <qui:collection-header>
         <xsl:if test="//BannerImage">
           <xsl:attribute name="src">
             <xsl:value-of select="//BannerImage" />
@@ -30,39 +30,39 @@
         </xsl:if>
         <xsl:call-template name="get-collection-title" />
         <xsl:call-template name="get-collection-subtitle" />
-        <qq:nav slot="browse">
+        <qui:nav slot="browse">
           <xsl:comment>browse records?</xsl:comment>
           <xsl:if test="normalize-space(//BrowseRecords)">
-            <qq:link href="{//BrowseRecords/Url}">Browse the collection records</qq:link>
+            <qui:link href="{//BrowseRecords/Url}">Browse the collection records</qui:link>
           </xsl:if>
-          <qq:link href="{//BrowseImages/Url}">Browse the collection images</qq:link>
-        </qq:nav>
-        <qq:search-form />
-      </qq:collection-header>
-      <qq:main>
-        <qq:block slot="introduction">
+          <qui:link href="{//BrowseImages/Url}">Browse the collection images</qui:link>
+        </qui:nav>
+        <qui:search-form />
+      </qui:collection-header>
+      <qui:main>
+        <qui:block slot="introduction">
           <xsl:apply-templates select="//CollDescr" mode="copy-guts" />
-        </qq:block>
+        </qui:block>
         <xsl:call-template name="build-thumbnail-list" /> 
-        <qq:block slot="description">
+        <qui:block slot="description">
           <xsl:apply-templates select="//InsertTextInfo//div[@class='instructiontxt']" mode="copy-guts" />
-        </qq:block>
-        <qq:block slot="copyright-information">
+        </qui:block>
+        <qui:block slot="copyright-information">
           <xsl:apply-templates select="//InsertTextInfo//div[@id='useguidelines']" mode="copy-guts" />
-        </qq:block>
-      </qq:main>
-      <qq:sidebar>
+        </qui:block>
+      </qui:main>
+      <qui:sidebar>
         <xsl:call-template name="build-panel-collection-links" />
         <xsl:call-template name="build-panel-browse-filters" />
         <xsl:call-template name="build-panel-related-collections" />
         <xsl:call-template name="build-panel-collection-contact" />
-      </qq:sidebar>
-      <qq:message>Message recived, La Jolla</qq:message>
-    </qq:root>
+      </qui:sidebar>
+      <qui:message>Message recived, La Jolla</qui:message>
+    </qui:root>
   </xsl:template>
 
   <xsl:template name="build-login-link">
-    <qq:link href="{//LoginLink/Url}">
+    <qui:link href="{//LoginLink/Url}">
       <xsl:choose>
         <xsl:when test="//LoginLink/Mode = 'logout'">
           <xsl:text>Log out</xsl:text>
@@ -71,11 +71,11 @@
           <xsl:text>Log in</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
-    </qq:link>
+    </qui:link>
   </xsl:template>
 
   <xsl:template name="get-collection-title">
-    <qq:collection-title>
+    <qui:collection-title>
       <xsl:choose>
         <xsl:when test="/Top/CollName = 'multiple'">
           <xsl:value-of select="normalize-space(/Top/GroupName)" />
@@ -84,22 +84,22 @@
           <xsl:value-of select="normalize-space(/Top/CollName/Full)" />
         </xsl:otherwise>
       </xsl:choose>
-    </qq:collection-title>
+    </qui:collection-title>
   </xsl:template>
 
   <xsl:template name="get-collection-subtitle">
     <xsl:if test="normalize-space(//Subtitle)">
-      <qq:collection-subtitle name="collection-subtitle">
+      <qui:collection-subtitle name="collection-subtitle">
         <xsl:value-of select="//Subtitle" />
-      </qq:collection-subtitle>
+      </qui:collection-subtitle>
     </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-thumbnail-list">
     <xsl:if test="//Snapshot">
-      <qq:thumbnail-list>
+      <qui:thumbnail-list>
         <xsl:for-each select="//Snapshot">
-          <qq:link href="{@href}">
+          <qui:link href="{@href}">
             <img src="{Thumbnail/@src}">
               <!-- <xsl:attribute name="alt">
                 <xsl:for-each select="Record//Value">
@@ -118,32 +118,32 @@
                 </xsl:if>
               </xsl:for-each>
             </span>
-          </qq:link>
+          </qui:link>
         </xsl:for-each>
-      </qq:thumbnail-list>
+      </qui:thumbnail-list>
     </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-panel-collection-links">
     <xsl:if test="//CollectionLinks">
-      <qq:panel>
-        <qq:header>In this collection</qq:header>
-        <qq:nav>
+      <qui:panel>
+        <qui:header>In this collection</qui:header>
+        <qui:nav>
           <xsl:for-each select="//CollectionLinks/Link">
-            <qq:link href="{@href}">
+            <qui:link href="{@href}">
               <xsl:value-of select="normalize-space(.)" />
-            </qq:link>
+            </qui:link>
           </xsl:for-each>
-        </qq:nav>
-      </qq:panel>
+        </qui:nav>
+      </qui:panel>
     </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-panel-related-collections">
     <xsl:if test="//Groups/Group">
-      <qq:panel>
-        <qq:header>Related Collections</qq:header>
-        <qq:block slot="help">
+      <qui:panel>
+        <qui:header>Related Collections</qui:header>
+        <qui:block slot="help">
           <xsl:text>Search this collection with other related collections in </xsl:text>
           <xsl:choose>
             <xsl:when test="count(//Groups/Group) = 1">
@@ -153,45 +153,45 @@
               <xsl:text> these groups</xsl:text>
             </xsl:otherwise>
           </xsl:choose>
-        </qq:block>
-        <qq:nav>
+        </qui:block>
+        <qui:nav>
           <xsl:for-each select="//Groups/Group">
-            <qq:link href="/cgi/i/image/image-idx?page=searchgroup;g={@GroupID}">
+            <qui:link href="/cgi/i/image/image-idx?page=searchgroup;g={@GroupID}">
               <xsl:value-of select="normalize-space(.)" />
-            </qq:link>
+            </qui:link>
           </xsl:for-each>
-        </qq:nav>
-      </qq:panel>
+        </qui:nav>
+      </qui:panel>
     </xsl:if>
   </xsl:template>
 
   <xsl:template name="build-panel-collection-contact">
-    <qq:panel>
-      <qq:header>Collection Contact</qq:header>
-      <qq:block-contact>
-        <qq:href type="{//ContactLink/@type}"><xsl:value-of select="normalize-space(//ContactLink)" /></qq:href>
-        <qq:span><xsl:value-of select="normalize-space(//ContactText)" /></qq:span>
-      </qq:block-contact>
-    </qq:panel>
+    <qui:panel>
+      <qui:header>Collection Contact</qui:header>
+      <qui:block-contact>
+        <qui:href type="{//ContactLink/@type}"><xsl:value-of select="normalize-space(//ContactLink)" /></qui:href>
+        <qui:span><xsl:value-of select="normalize-space(//ContactText)" /></qui:span>
+      </qui:block-contact>
+    </qui:panel>
   </xsl:template>
 
   <xsl:template name="build-panel-browse-filters">
-    <qq:panel>
+    <qui:panel>
       <xsl:comment>see: https://curiosity.lib.harvard.edu/american-currency</xsl:comment>
-      <qq:header>Limit your search</qq:header>
-      <qq:nav>
+      <qui:header>Limit your search</qui:header>
+      <qui:nav>
         <xsl:for-each select="//SearchForm//Rgn/Option">
           <xsl:choose>
             <xsl:when test="Value = 'ic_all'"></xsl:when>
             <xsl:otherwise>
-              <qq:link href="/cgi/i/image/image-idx?c={//Param[@name='cc']};page=search;filter={Value}">
+              <qui:link href="/cgi/i/image/image-idx?c={//Param[@name='cc']};page=search;filter={Value}">
                 <xsl:value-of select="Label" />
-              </qq:link>
+              </qui:link>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>
-      </qq:nav>
-    </qq:panel>
+      </qui:nav>
+    </qui:panel>
   </xsl:template>
 
   <xsl:template match="*" mode="copy-guts">
